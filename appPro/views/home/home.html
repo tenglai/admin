@@ -1,0 +1,101 @@
+<!--ion-view包裹模版-->
+<ion-view title="首页" id="homeView">
+	<!--左右按钮-->
+	<ion-nav-buttons side="left">
+		<button class="button button-clear home-btn">欢乐购</button>
+	</ion-nav-buttons>
+	<ion-nav-title>
+		<div class="home-nav-wrapper">
+			<span class="icon ion-ios-search"></span>
+			<span>中秋佳节送好礼</span>
+		</div>
+	</ion-nav-title>
+	<ion-nav-buttons side="right">
+		<button class="button button-clear icon ion-calendar"></button>
+	</ion-nav-buttons>
+	<!--
+    	副标题
+    -->
+    <div class="bar bar-subheader home-subheader">
+    	<!--
+        	ion-scroll 自生的宽高需要先确定，再去确认里面所有的子元素宽高之和有没有大于 ion-scroll自身，自己会将所有的内容包裹在一层div里面
+        	ng-class选定元素改变样式
+        	ng-click 绑定点击事件
+        	$index只在ng-repeat中起作用，它的作用是获取当前标签的索引值
+        	注：让当前导航栏的下标等于selectSlide 来达到滑动页面导航栏跟着变化
+        -->
+    	<ion-scroll direction="x" scrollbar-x="false">
+	    	<span class="nav-btn" ng-repeat="item in navData" ng-class="{'btn-active':$index == selectSlide}" ng-click="navAction($index,item.id)">{{item.name}}</span>
+    	</ion-scroll>
+    </div>
+    <!--
+    	ion-slide 占满全屏
+    	ion-slide 需要包含ion-content部分及上下拉刷新部分
+    	给home-box绝对定位 top:88px bottom:49px left:0 width:100% 则home-box 占满剩余部分  
+    	ion-content 部分 因为父级已经变成了slider 所有 top=0;bottom:0
+    -->
+    <!--
+    	导航分页内容
+    	show-pager 滑动框的页面是否显示。(去除选项卡的点按钮)
+    	delegate-handle 该句柄用$ionicSlideBoxDelegate来标识这个滑动框。
+    	on-slide-changed 当滑动时，触发该表达式。传递一个'索引'变量。
+    	注：当出现多个ion-slide-box时，需要给每个ion-slide-box添加delegate-handle事件，以便互不影响
+    -->
+    <ion-slide-box class="home-box" show-pager="false" delegate-handle="home-box" on-slide-changed="listChangeAction($index)">
+    	<!--
+        	ng-repeat 根据navData中的元素个数创造同样多的ion-slide个数，每个ion-slide的内容是一样的
+        	用 ng-if 判断页面是否显示 且 当前页、上一页、下一页需要显示，其他页面隐藏 selectSlide == $index||selectSlide == $index+1||selectSlide == $index-1
+        -->
+    	<ion-slide ng-repeat="slideData in navData" class="home-page">
+			<!--ion-content包裹内容-->
+			<ion-content id="home">
+				<!--
+		        	下拉刷新
+		        	spinner 改变符号样式
+		        	给 刷新 和 加载更多 添加 ng-if 当 selectSlide == $index 时 显现
+		        -->
+		        <ion-refresher spinner="dots" on-refresh="refresh()" ng-if="selectSlide == $index">
+		        	
+		        </ion-refresher>
+		        <!--
+		        	需要用一个div将整个内容包裹住，div里面的内容为可滚动，ion-infinite-scroll上拉加载更多才可以请作用
+		        -->
+		        <div>
+					<!--用一个div将两个banner 包裹起来 通过对allBanner进行处理 以达到两个ion-slide-box互不影响-->
+					<div id="allBanner">
+						<!--banners 导入banner图片-->
+						<ion-slide-box does-continue="true" auto-play="true" slide-interval="3000" ng-if="$index == 0" delegate-handle="banner">
+							<ion-slide ng-repeat="item in banners">
+								<img ng-src="{{item.imgUrl}}" />
+							</ion-slide>
+						</ion-slide-box>
+						<!--second banners 设置横向滚动 去除滚动条-->
+						<ion-scroll class="second-banner" direction="x" scrollbar-x="false" ng-if="$index == 0">
+							<img ng-repeat="item in secondBanners" ng-src="{{item.imgUrl}}"/>
+						</ion-scroll>
+					</div>
+					<!--
+			        	列表 list
+			        	item-image 图片占满全行
+			        	list 无边框 list-borderless
+			        	allListData[$index] 17个导航数组中对应的当前下标的数组
+			        -->
+					<ion-list class="home-list list-borderless" ng-if="selectSlide == $index||selectSlide == $index+1||selectSlide == $index-1">
+						<ion-item ng-repeat="item in allListData[$index]" class="item-image">
+							<img ng-src="{{item.imgUrl}}" />
+							<p class="item-title">
+								<span>{{item.title}}</span>
+								<span><i class="icon ion-android-favorite-outline assertive"></i>{{item.likes}}</span>
+							</p>
+						</ion-item>
+					</ion-list>
+				</div>
+				<!--
+		        	通过ng-if进行判断，当无数据可以加载更多时，ng-if="false",将ion-infinite-scroll从DOM结构中清除，已到达没有动画的效果
+		        -->
+				<ion-infinite-scroll spinner="dots" on-infinite="loadMore()" immediate-check="false" distance="1%" ng-if="canLoadMore&&selectSlide==$index">
+				</ion-infinite-scroll>
+			</ion-content>
+		</ion-slide>
+    </ion-slide-box>
+</ion-view>

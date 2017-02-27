@@ -1,0 +1,17 @@
+<ion-view >
+	<!--仿造home 定义标题-->
+	<ion-nav-title>
+		<div class="category-nav-wrapper">
+			<span ng-repeat="item in ['攻略','单品']" ng-class="{'active':$index == selectIndex}" ng-click="titleAction($index)">{{item}}</span>
+		</div>
+	</ion-nav-title>
+	<!--搜索框-->
+	<div class="bar-search">
+		<p><span class="icon ion-ios-search-strong">中秋佳节送好礼</span></p>
+	</div>
+	<!--设置内容部分-->
+	<ion-content id="category">
+		<!--新建两个模版(html文件) 通过ng-include进行操作-->
+		<div ng-include="tmpUrl"></div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,33 @@
+<div class="single">
+	<!--导航部分-->
+	<!--设置左右两边滚动视图
+		因为两边都有scroll,以免点击一边，另一边跟着滚动 通过delegate-handle进行绑定
+	-->
+	<ion-scroll class="left-scroll" scrollbar-y="false" delegate-handle="nav">
+		<!--对左边进行排布 ng-repeat titles
+			ng-class 进行选中时的样式设置
+			ng-click 绑定点击事件navAction()
+		-->
+		<div class="nav-title" ng-repeat="title in titles" ng-class="{'titleActive':titleIndex == $index}" ng-click="navAction($index)">{{title}}</div>
+	</ion-scroll>
+	<!--列表部分 -->
+	<!--
+		效果：右边滑动 左边跟着选中
+		方案：通过绑定滚动事件 on-scroll
+	-->
+	<ion-scroll class="right-scroll" scrollbar-y="false" delegate-handle="list" on-scroll="listScrollAction()">
+		<!--
+        	多个列表,需要循环
+        	给每一个list设置行高 通过绑定 ng-style="{{***}}"
+        -->
+        <div class="single-list" ng-repeat="listData in lists" ng-style="{{listStyleArr[$index]}}">
+        	<!--标题分割线-->
+			<p class="list-title">{{titles[$index]}}</p>
+        	<!--列表的每个item-->
+        	<div class="single-item" ng-repeat="itemData in listData">
+        		<img ng-src="{{itemData.icon_url}}"/>
+        		<p>{{itemData.name}}</p>
+        	</div>
+        </div>
+	</ion-scroll>
+</div>
