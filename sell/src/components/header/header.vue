@@ -18,7 +18,8 @@
   			</div>
   		</div>
   		<div v-if="seller.supports" class="support-count">
-  			
+  			<span class="count">{{seller.supports.length}}</span>
+  			<i class="icon-keyboard_arrow_right"></i>
   		</div>
   	</div>
   	<div class="bulletin-wrapper"></div>
