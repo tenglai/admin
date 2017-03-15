@@ -45,11 +45,14 @@ export default {
 </script>
 
 <style lang="scss">
+	@import './common/scss/mixin.scss';
+	
 	.tab{
 		display: flex;
 		width: 100%;
 		height: 40px;
 		line-height: 40px;
+		@include border-1px(rgba(7,17,27,0.1));
 		.tab-item{
 			flex: 1;
 			text-align: center;
