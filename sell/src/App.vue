@@ -31,10 +31,8 @@ export default {
   this.$http.get('/api/seller').then((response) => {
   	// response为返回的数据
   	response = response.body
-  	console.log(response)
   	if (response.errno === ERR_OK) {
   		this.seller = response.data
-  		console.log(this.seller)
   	}
   	})
   },
