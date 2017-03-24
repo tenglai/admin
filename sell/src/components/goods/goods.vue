@@ -2,7 +2,7 @@
 	<div class="goods">
 		<div class="menu-wrapper" v-el:menu-wrapper>
 			<ul>
-				<li v-for="item in goods" class="menu-item">
+				<li v-for="item in goods" class="menu-item" :class="{'current': currentIndex === $ index}">
 					<span class="text border-1px">
 						<span v-show="item.type>0" class="icon" :class="classMap[item.type]"></span>{{item.name}}
 					</span>
@@ -11,7 +11,7 @@
 		</div>
 		<div class="foods-wrapper" v-el:foods-wrapper>
 			<ul>
-				<li v-for="item in goods" class="food-list">
+				<li v-for="item in goods" class="food-list food-list-hook">
 					<h1 class="title">{{item.name}}</h1>
 					<ul>
 						<li v-for="food in item.foods" class="food-item border-1px">
@@ -36,7 +36,7 @@
 	</div>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
 import BScroll from 'better-scroll'
 const ERR_OK = 0
 export default {
@@ -47,9 +47,23 @@ export default {
 	},
 	data() {
 		return {
-			goods: []
+			goods: [],
+      listHeight: [],
+      scrollY: 0
 		}
 	},
+  computed: {
+    currentIndex() {
+      for (let i = 0; i < this.listHeight.length; i++) {
+        let height1 = this.listHeight[i]
+        let height2 = this.listHeight[i + 1]
+        if (!height2 || (this.scrollY > height1 && this.scrollY < height2)) {
+          return i
+        }
+      }
+      return 0
+    }
+  },
 	created() {
 		this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee']
 		this.$http.get('/api/goods').then((response) => {
@@ -58,6 +72,8 @@ export default {
 				this.goods = response.data
 				this.$nextTick(() => {
 					this._initScroll()
+          // 定义一个方法，计算高度
+          this._calculateHeight()
 				})
 			}
 		})
@@ -65,15 +81,32 @@ export default {
 	methods: {
 		_initScroll() {
 			this.menuScroll = new BScroll(this.$els.menuWrapper, {})
-			this.foodsScroll = new BScroll(this.$els.foodsWrapper, {})
-		}
+			this.foodsScroll = new BScroll(this.$els.foodsWrapper, {
+        probeType: 3
+      })
+      // 监听scroll事件
+      this.foodsScroll.on('scroll', (pos) => {
+          this.scrollY = Math.abs(Math.round(pos.y))
+      })
+		},
+    _calculateHeight() {
+      let foodList = this.$els.foodsWrapper.getElementByClassName('food-list-hook')
+      let height = 0
+      this.listHeight.push(height)
+      for (let i = 0; i < foodList.length; i++) {
+          let item = foodList(i)
+          height += item.clientHeight
+          // 获取每个区间的高度
+          this.listHeight.push(height)
+      }
+    }
 	}
 }
 </script>
 
 <style lang="scss" scoped>
 	@import "../../common/scss/mixin.scss";
-	
+
 	.goods{
 		display: flex;
 		position: absolute;

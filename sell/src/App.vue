@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
 import header from './components/header/header.vue'
 // 定义常量
 const ERR_OK = 0
@@ -44,7 +44,7 @@ export default {
 
 <style lang="scss">
 	@import './common/scss/mixin.scss';
-	
+
 	.tab{
 		display: flex;
 		width: 100%;
