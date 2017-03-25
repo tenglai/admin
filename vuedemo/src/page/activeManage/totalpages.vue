@@ -1,0 +1,1 @@
+totalpages.vue
