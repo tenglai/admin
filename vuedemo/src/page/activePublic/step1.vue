@@ -335,12 +335,109 @@
             signStartTimeTime: '',
             signEndTimeDate: '',
             signEndTimeTime: '',
-            activePersonNum: '',   //
-            activeDescribe: '',
-
+            activePerson: '',      // 是否限制活动人数
+            activePersonNum: '',   // 限制多少人
+            activeDescribe: '',    // 活动简介
+            UseMsgShow: '',        // 报名活动信息展示
+            evaluate: '',          // 评价功能
+            adTitle: '',           // 广告标题
+            adContent: '',         // 广告内容
+            adLink: ''             // 赞助链接
           }
         }
       }
+    },
+    watch: {     // 监控
+      ruleForm: {
+        handler: function (val,oldVal) {
+          store.commit('setRuleForm',this.ruleForm)
+          this.tagsValid = !this.ruleForm.tags.length ? '' : false
+          this.ruleFormChange = true
+        },
+        deep: true // 深度监控,可以观察到ruleForm内任意属性的变化
+      }
+    },
+    methods: {
+      handleRemove: function (file, fileList) {
+        console.log(file,fileList)
+      },
+      handlePreview: function (file) {
+        console.log(file)
+      },
+      handleSuccess: function () {
+      },
+      handleError: function () {
+      },
+      // 显示添加活动标签对话框
+      showDialog: function () {
+        if (this.ruleForm.tags.length >= 5 ) {
+          this.$message({
+            message: '最多设置5个标签',
+            type: 'warning'
+          })
+        }else{
+          this.dialogFormVisible = true
+          this.dialogForm = {}
+        }
+      },
+      // 删除活动标签
+      handleClose: function (tag) {
+        var index = this.ruleForm.tags.indexOf(tag)
+        this.ruleForm.tags.splice(index,1)
+      },
+      // 删除活动分类的某一项
+      handleCloseFenLei: function (fenLei){
+        var index = this.ruleForm.fenLeis.indexOf(fenLei)
+        this.ruleForm.fenLeis.splice(index,1)
+      },
+      // 添加标签
+      handleAdd: function (tag,form,tags) {
+        if(tag && tag.trim().length != 0){
+          var isExist = false
+          tag = tag.trim()
+          for(var i=0;i<tags.length; i++){
+            if( tag[i].name == tag ){
+              isExist = true
+              break
+            }
+          }
+          if(isExist){
+            this.$message({
+              message: '该标签已存在'，
+              type: 'warning'
+            })
+          }else{
+            this.dialogFormVisible = false
+            this.dialogFormFenLeiVisible = false
+            tags.push({
+              name: tag
+            })
+          }
+        }else{
+          this.$message({
+            message: '标签不能为空',
+            type: 'warning'
+          })
+        }
+      },
+      openAd: function () {
+        this.$message('该功能正在完善')
+      },
+    },
+    // 页面初始化
+    created: function () {
+
     }
   }
 </script>
+
+<style>
+  .step{
+    margin-bottom: 30px;
+  }
+  .step1 .demo-ruleForm .el-form-item{
+    margin-bottom: 25px;
+    margin-right: 50px;
+  }
+  
+</style>
