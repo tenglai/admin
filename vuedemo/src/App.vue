@@ -27,7 +27,8 @@
 
       <!-- 右侧主内容区 -->
       <div class="main-right">
-
+        <!-- 视图 -->
+        <router-view class="view"></router-view>
       </div>
     </main>
   </div>
@@ -58,5 +59,47 @@ body{
   min-width: 1200px;
   margin: 0 auto;
   font-family: "Helvetica Neue","PingFang SC",Arial,sans-serif;
+}
+/* 头部导航 */
+header {
+  z-index: 1000;
+  min-width: 1200px;
+  transition: all 0.5s ease;
+  border-top: 4px solid #3091F2;
+  background-color: #fff;
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.12),0px 0px 6px 0px rgba(0,0,0,0.04);
+}
+header.header-fixed{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+header .el-menu-demo{
+  padding-left: 300px!important;
+}
+/* 主内容区 */
+main{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 800px;
+  border: solid 40px #E9ECF1;
+  background-color: #FCFCFC;
+}
+main .main-left{
+  text-align: center;
+  width: 200px;
+  float: left;
+}
+main .main-right{
+  -webkit-box-flex:1;
+  -ms-flex: 1;
+  flex: 1;
+  background-color: #fff;
+  padding: 50px 70px;
+}
+main .el-menu{
+  background-color: transparent!important;
 }
 </style>

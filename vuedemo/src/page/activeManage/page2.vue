@@ -1,1 +1,10 @@
-page2.vue
+<template>
+
+</template>
+
+<script>
+</script>
+
+<style>
+
+</style>
