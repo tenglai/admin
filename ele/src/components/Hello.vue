@@ -24,25 +24,10 @@
 export default {
   name: 'hello',
   data () {
-    studyEs6()
     return {
-      msg: '欢迎 to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App'
     }
   }
-}
-function studyEs6() {
-  function* show(){
-    console.log('aaa:' + (yield '百度'))
-    console.log('bbb:' + (yield '广东深圳'))
-    yield 'www.baidu.com'
-    return 'end'
-  }
-  let y = show()
-  console.log(y.next())
-  console.log(y.next('我是注入的aaa'))  // '我是注入的aaa' 是 yield '百度' 的返回值
-  console.log(y.next('我是注入的bbb'))  // '我是注入的bbb' 是 yield '广东深圳' 的返回值
-  console.log(y.next())
-  console.log(y.next())
 }
 </script>
 
