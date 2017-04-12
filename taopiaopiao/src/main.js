@@ -1,15 +1,49 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './App'
-import router from './router'
+import VueRouter from 'vue-router'
+import Mint from 'mint-ui'
+import store from './store'
+import 'vconsole'
 
-Vue.config.productionTip = false
+import VueResource from 'vue-resource'
+import 'mint-ui/lib/style.css'
+import 'assets/css/common.css'
+import 'assets/css/swiper.min.css'
 
-/* eslint-disable no-new */
-new Vue({
+import Home from './views/Home'
+
+Vue.use(Mint)
+Vue.use(VueRouter)
+Vue.use(VueResource)
+
+const routes = [{
+  path: '/',
+  component: Home
+},{
+  path: '/mv',
+  component: Home
+}]
+
+const router = new VueRouter({
+  routes
+})
+
+router.beforeEach((to,from,next) => {
+  store._mutations.pushLoadStack[0]()
+  next()
+})
+
+router.afterEach(route => {
+  document.body.scrollTop = 0
+  document.documentElement.scrollTop = 0
+  window.onscroll = null
+  setTimeout(() => {
+    store._mutations.completeLoad[0]()
+  },100)
+})
+
+var app = new Vue({
   el: '#app',
   router,
-  template: '<App/>',
-  components: { App }
+  store,
+  ...App
 })
