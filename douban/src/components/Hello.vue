@@ -1,7 +1,6 @@
 <template>
   <div class="hello">
-    <!-- 路由跳转 -->
-    <router-link to="/index">Github Api示例</router-link>
+    <router-link to="/index">Github Api 示例</router-link>
     <router-link to="/vuex-demo">Vuex示例</router-link>
   </div>
 </template>
@@ -35,5 +34,9 @@ li {
 
 a {
   color: #42b983;
+}
+.hello{
+  margin: auto;
+  text-align: center;
 }
 </style>
