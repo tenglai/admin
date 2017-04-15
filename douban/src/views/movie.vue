@@ -1,59 +1,49 @@
 <template>
-  <section class="grid">
-    <h2>{{inTheatersList.title}}</h2>
-    <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
-      <div class="item" v-for="item in inTheatersList.subjects">
-        <div class="cover">
-          <div class="wp">
-            <img class="img-show" :src="item.images.medium"/>
-          </div>
-        </div>
-        <div class="info">
-          <h3>{{item.title}}</h3>
+  <section class="grid" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
+    <h2>{{inTheaters.title}}</h2>
+    <router-link :to="{name: 'movie-detail', params: {id: item.id}}" class="item" v-for="item in inTheaters.subjects">
+      <div class="cover">
+        <div class="wp">
+          <img class="img-show" :src="item.images.medium"/>
         </div>
       </div>
-    </div>
+      <div class="info">
+        <h3>{{item.title}}</h3>
+      </div>
+    </router-link>
   </section>
 </template>
 
 <script>
   import Loading from '../components/loading'
-  import InfiniteLoading from 'vue-infinite-loading'
   import InfiniteScroll from 'vue-infinite-scroll'
-  // import {mapState} from 'vuex' // mapState为vuex中的一种方法
-  // import * as types from '../store/types'  // types为别名
-  import axios from 'axios' // axios为ajax的简化
+  import {mapState} from 'vuex' // mapState为vuex中的一种方法
+  import * as types from '../store/types'  // types为别名
+  // import axios from 'axios' // axios为ajax的简化
 
-  // function fetchMovies (store, start) {
-  //   return store.dispatch([types.IN_THEATERS], start)
-  // }
+  function fetchMovies (store, start) {
+    return store.dispatch([types.IN_THEATERS], start)
+  }
 
   export default {
-    components: {Loading, InfiniteLoading}, // 组件
+    components: {Loading}, // 组件
     directives: {InfiniteScroll}, // 插件
     data () {
       return {
-        loading: true,
-        inTheatersList: {
-          subjects: []
-        },
-        busy: false
       }
     },
+    computed: mapState({
+      inTheaters: state => state.inTheaters,
+      busy: state => state.busy
+    }),
     mounted () {
     },
     methods: {
       loadMore () {
-        this.busy = true
-        let start = this.inTheatersList.subjects.length
-        axios.get('/api/movie/coming_soon?start=' + start)
-          .then(response => {
-            this.inTheatersList.tatal = response.data.total
-            this.inTheatersList.subjects = this.inTheatersList.subjects.concat(response.data.subjects)
-            if (start < this.inTheatersList.total) {
-              this.busy = false // 无法加载更多
-            }
-          })
+        this.$store.dispatch([types.SET_INFINITE_BUSY], true) // 给state传值
+        let start = this.$store.state.inTheaters.subjects.length
+        fetchMovies(this.$store, start).then(() => {
+        })
       }
     }
   }

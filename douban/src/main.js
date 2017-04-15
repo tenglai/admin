@@ -18,5 +18,5 @@ new Vue({
   router,
   store,
   axios,
-  render: h => h(App)
+  render: h => h(App) // 渲染函数 h 为 creatElement
 }).$mount('#app')
