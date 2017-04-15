@@ -1,32 +1,60 @@
 <template>
   <section class="grid">
     <h2>{{inTheatersList.title}}</h2>
-    <router-link :to="{name:'movie-detail', params: {id: item.id}}" class="item" v-for="item in inTheatersList.subjects">
-      <div class="cover">
-        <div class="wp">
-          <img class="img-show" :src="item.images.medium" />
+    <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
+      <div class="item" v-for="item in inTheatersList.subjects">
+        <div class="cover">
+          <div class="wp">
+            <img class="img-show" :src="item.images.medium"/>
+          </div>
+        </div>
+        <div class="info">
+          <h3>{{item.title}}</h3>
         </div>
       </div>
-      <div class="info">
-        <h3>{{item.title}}</h3>
-      </div>
-    </router-link>
+    </div>
   </section>
 </template>
 
 <script>
-  import {mapState} from 'vuex'
-  import * as types from '../store/types'  // types为别名
+  import Loading from '../components/loading'
+  import InfiniteLoading from 'vue-infinite-loading'
+  import InfiniteScroll from 'vue-infinite-scroll'
+  // import {mapState} from 'vuex' // mapState为vuex中的一种方法
+  // import * as types from '../store/types'  // types为别名
+  import axios from 'axios' // axios为ajax的简化
+
+  // function fetchMovies (store, start) {
+  //   return store.dispatch([types.IN_THEATERS], start)
+  // }
 
   export default {
+    components: {Loading, InfiniteLoading}, // 组件
+    directives: {InfiniteScroll}, // 插件
     data () {
-      return {}
+      return {
+        loading: true,
+        inTheatersList: {
+          subjects: []
+        },
+        busy: false
+      }
     },
-    computed: mapState({
-      inTheatersList: state => state.inTheatersList //
-    }),
     mounted () {
-      this.$store.dispatch([types.IN_THEATERS])
+    },
+    methods: {
+      loadMore () {
+        this.busy = true
+        let start = this.inTheatersList.subjects.length
+        axios.get('/api/movie/coming_soon?start=' + start)
+          .then(response => {
+            this.inTheatersList.tatal = response.data.total
+            this.inTheatersList.subjects = this.inTheatersList.subjects.concat(response.data.subjects)
+            if (start < this.inTheatersList.total) {
+              this.busy = false // 无法加载更多
+            }
+          })
+      }
     }
   }
 </script>
@@ -39,7 +67,7 @@
     max-width: 660px;
     overflow: hidden;
     box-sizing: border-box;
-    h2{
+    h2 {
       font-size: 24px;
       font-weight: normal;
       box-sizing: border-box;
@@ -59,26 +87,26 @@
       overflow: hidden;
       text-decoration: none;
       color: #9b9b9b;
-      .cover{
+      .cover {
         min-height: 87px;
         overflow: hidden;
         position: relative;
-        .img-show{
+        .img-show {
           width: 100%;
         }
       }
-      .wp{
+      .wp {
         position: relative;
-        &:before{
+        &:before {
           content: '';
           display: block;
           padding-top: 143%;
         }
       }
-      .info{
+      .info {
         height: 45px;
         overflow: hidden;
-        h3{
+        h3 {
           font-size: 13px;
           font-weight: normal;
           padding: 5px 0 0;
@@ -92,17 +120,17 @@
           margin: 0;
         }
       }
-      .rank{
+      .rank {
         height: 16px;
         font-size: 12px;
         padding-top: 3px;
         text-align: center;
-        .rating-stars{
+        .rating-stars {
           display: inline-block;
           vertical-align: middle;
         }
       }
-      img{
+      img {
         display: block;
         position: absolute;
         left: -100%;

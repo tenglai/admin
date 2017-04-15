@@ -20,6 +20,7 @@
     "sass-loader": "^6.0.3",
     "superagent": "^3.5.2",
     "vue": "^2.2.2",
+    "vue-infinite-loading": "^2.0.4",
     "vue-infinite-scroll": "^2.0.1",
     "vue-router": "^2.3.0",
     "vuex": "^2.3.0"

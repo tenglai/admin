@@ -17,8 +17,8 @@ export function fetchItemByType (type) {
   return fetch(`${type}`)
 }
 
-export function fetchMoviesByType (type) {
-  return fetchItemByType(`movie/${type}`)
+export function fetchMoviesByType (type, start = 0) {
+  return fetchItemByType(`movie/${type}?start=${start}`)
 }
 
 export function fetchMovieById (id) {
