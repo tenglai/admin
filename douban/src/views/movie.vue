@@ -16,7 +16,7 @@
 
 <script>
   import {mapState} from 'vuex'
-  import * as types from '../store/types'
+  import * as types from '../store/types'  // types为别名
 
   export default {
     data () {
