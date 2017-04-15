@@ -12,13 +12,13 @@
     <div class="not-found" v-if="!user.login && username">
       {{username}} Not Found!
     </div>
-    <!-- <loading v-if="loading"></loading> -->
+    <loading v-if="loading"></loading>
   </div>
 </template>
 
 <script>
   // import {mapState} from 'vuex'
-  // import loading from '../components/loading'
+  import loading from '../components/loading'
   export default {
     data () {
       return {
@@ -36,7 +36,7 @@
       }
     },
     components: {
-      // loading
+      loading
     }
   }
 </script>

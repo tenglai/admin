@@ -39,9 +39,9 @@
     computed: {
       getMeta () {
         var movie = this.$store.state.movie
-        var cast = movie.casts.reduce((name,value) => {  //
-          return name ? name + '/' + vaule.name : value.name
-        },'')
+        var cast = movie.casts.reduce((name, value) => {
+          return name ? name + '/' + value.name : value.name
+        }, '')
         return movie.countries.join('/') + '/' + movie.genres.join('/') + '/' + movie.directors[0].name + '(导演)/' + cast
       },
       ...mapState({
@@ -93,7 +93,7 @@
         display: -webkit-box;
         display: -moz-box;
         display: box;
-        display；-webkit-flex;
+        display:-webkit-flex;
         display: -moz-flex;
         display: -ms-flexbox;
         display: flex;
@@ -116,12 +116,12 @@
           color: #ffb712;
           font-size: 15px;
           text-align: center;
-          -webkit-box-flex: 1,
-          -moz-box-flex: 1,
-          box-flex: 1,
-          -webkit-flex: 1,
-          -moz-flex: 1,
-          -ms-flex: 1,
+          -webkit-box-flex: 1;
+          -moz-box-flex: 1;
+          box-flex: 1;
+          -webkit-flex: 1;
+          -moz-flex: 1;
+          -ms-flex: 1;
           flex: 1;
         }
       }
@@ -130,7 +130,7 @@
       h2{
         color: #aaa;
         margin: 0 0 15px;
-        font-size；15px;
+        font-size: 15px;
       }
     }
   }

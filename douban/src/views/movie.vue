@@ -70,7 +70,7 @@
       .wp{
         position: relative;
         &:before{
-          content: '',
+          content: '';
           display: block;
           padding-top: 143%;
         }
