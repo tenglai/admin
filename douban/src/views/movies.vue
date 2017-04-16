@@ -5,6 +5,8 @@
         {{movie.title}}
         <!-- 命名的路由，跳转到movie-list，query带查询参数  /movie-list?type=movie.type -->
         <router-link tag="span" :to="{name: 'movie-list', query: {type: movie.type}}" class="more">更多</router-link>
+      </h2>
+      <div class="card">
         <router-link :to="{name: 'movie-detail', params: {id: item.id}}" class="item" v-for="item in movie.subjects">
           <div class="cover">
             <div class="wp">
@@ -15,12 +17,14 @@
             <h3>{{item.title}}</h3>
           </div>
         </router-link>
-      </h2>
+      </div>
     </div>
+    <spinner :show="loading"></spinner>
   </section>
 </template>
 
 <script>
+  import Spinner from '../components/Spinner'
   import {mapState} from 'vuex'
   import * as types from '../store/types'
   import {API_TYPE} from '../store/api'
@@ -29,8 +33,11 @@
     return store.dispatch([types.FETCH_MOVIES], payload)
   }
   export default {
+    components: {Spinner},
     data () {
-      return {}
+      return {
+        loading: true
+      }
     },
     computed: mapState({ // mapState工具函数会将 store 中的 state 映射到局部计算属性中
       movies: state => state.movie.movies
@@ -38,9 +45,16 @@
     mounted () {
       fetchMovies(this.$store, {type: API_TYPE.movie.in_theaters, start: 0, count: 9})
         .then(() => {
+          this.loading = false
+          console.log('fetch done')
           fetchMovies(this.$store, {type: API_TYPE.movie.coming_soon, start: 0, count: 9})
         })
     },
-    methods: {}
+    updated () {
+      console.log('update')
+    },
+    destroyed () {
+      this.$store.dispatch([types.CLEAN_MOVIES])
+    }
   }
 </script>

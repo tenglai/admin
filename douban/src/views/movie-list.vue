@@ -1,21 +1,23 @@
 <template>
   <section class="grid" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
     <h2>{{movieList.title}}</h2>
-    <router-link :to="{name: 'movie-detail', params: {id: item.id}}" class="item" v-for="item in movieList.subjects">
-      <div class="cover">
-        <div class="wp">
-          <img class="img-show" :src="item.images.medium"/>
+    <div class="card">
+      <router-link :to="{name: 'movie-detail', params: {id: item.id}}" class="item" v-for="item in movieList.subjects">
+        <div class="cover">
+          <div class="wp">
+            <img class="img-show" :src="item.images.medium"/>
+          </div>
         </div>
-      </div>
-      <div class="info">
-        <h3>{{item.title}}</h3>
-      </div>
-    </router-link>
+        <div class="info">
+          <h3>{{item.title}}</h3>
+        </div>
+      </router-link>
+    </div>
   </section>
 </template>
 
 <script>
-  import Loading from '../components/loading'
+  import Loading from '../components/Spinner'
   import InfiniteScroll from 'vue-infinite-scroll'
   import {mapState} from 'vuex' // mapState为vuex中的一种方法，在computed中调用
   import * as types from '../store/types'  // types为别名
@@ -47,32 +49,41 @@
         fetchMovies(this.$store, {type: this.type, start: start}).then(() => {
         })
       }
+    },
+    destroyed () {
+      this.$store.dispatch([types.CLEAN_MOVIE])
     }
   }
 </script>
 
 <style lang="scss" scoped>
   .grid {
-    padding: 40px 0;
+    padding: 40px 0 0;
     margin-left: auto;
     margin-right: auto;
     max-width: 660px;
     overflow: hidden;
     box-sizing: border-box;
     h2 {
-      font-size: 18px;
+      font-size: 14px;
       font-weight: normal;
       box-sizing: border-box;
       max-width: 660px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 6px;
+      margin: 15px auto;
       padding: 0 4%;
+      color: #8e8e8e;
       .more {
         float: right;
         font-size: 12px;
         color: #999;
       }
+    }
+    .card {
+      clear: both;
+      overflow: hidden;
+      background: #fff;
+      border-radius: 10px;
+      padding: 14px 0 0;
     }
     .item {
       float: left;
