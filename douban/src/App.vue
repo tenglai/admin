@@ -10,6 +10,7 @@ import vHeader from './components/header'
 import Hello from './components/Hello'
 import Index from './views/index'
 import VuexDemo from './views/vuex-demo'
+import Movies from './views/movies'
 import MovieList from './views/movie-list.vue'
 import MovieDetail from './views/movie-detail'
 
@@ -20,6 +21,7 @@ export default {
     Hello,
     Index,
     VuexDemo,
+    Movies,
     MovieList,
     MovieDetail
   }

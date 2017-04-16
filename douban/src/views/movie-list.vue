@@ -19,7 +19,7 @@
   import InfiniteScroll from 'vue-infinite-scroll'
   import {mapState} from 'vuex' // mapState为vuex中的一种方法，在computed中调用
   import * as types from '../store/types'  // types为别名
-  import {API_TYPE} from '../store/api'
+  // import {API_TYPE} from '../store/api'
 
   function fetchMovies (store, payload) {
     return store.dispatch([types.FETCH_MOVIE_LIST], payload)
@@ -29,19 +29,22 @@
     components: {Loading}, // 组件
     directives: {InfiniteScroll}, // 插件
     data () {
-      return {}
+      return {
+        type: ''
+      }
     },
     computed: mapState({
       movieList: state => state.movie.movieList,
       busy: state => state.movie.busy
     }),
-    mounted () {
+    mounted () { // 页面加载完毕后执行
+      this.type = this.$route.query.type
     },
     methods: {
       loadMore () {
         this.$store.dispatch([types.SET_INFINITE_BUSY], true) // 给state传值
         let start = this.$store.state.movie.movieList.subjects.length
-        fetchMovies(this.$store, {type: API_TYPE.movie.in_theaters, start: start}).then(() => {
+        fetchMovies(this.$store, {type: this.type, start: start}).then(() => {
         })
       }
     }
@@ -50,21 +53,26 @@
 
 <style lang="scss" scoped>
   .grid {
-    padding: 20px 0;
+    padding: 40px 0;
     margin-left: auto;
     margin-right: auto;
     max-width: 660px;
     overflow: hidden;
     box-sizing: border-box;
     h2 {
-      font-size: 24px;
+      font-size: 18px;
       font-weight: normal;
       box-sizing: border-box;
       max-width: 660px;
       margin-left: auto;
       margin-right: auto;
       margin-bottom: 6px;
-      padding-left: 4%;
+      padding: 0 4%;
+      .more {
+        float: right;
+        font-size: 12px;
+        color: #999;
+      }
     }
     .item {
       float: left;

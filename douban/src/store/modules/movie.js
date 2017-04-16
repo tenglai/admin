@@ -6,6 +6,7 @@ import * as types from '../types'
 import {fetchMoviesByType, fetchMovieById} from '../api'
 
 const state = {
+  movies: [],
   movieList: {
     title: '',
     total: 0,
@@ -16,6 +17,13 @@ const state = {
 }
 
 const actions = {
+  [types.FETCH_MOVIES] (context, payload) {
+    fetchMoviesByType(payload.type, payload.start, payload.count)
+      .then(data => {
+        data.type = payload.type
+        return context.commit([types.FETCH_MOVIES], data)
+      })
+  },
   [types.FETCH_MOVIE_LIST] (context, payload) {
     fetchMoviesByType(payload.type, payload.start)
       .then(data => context.commit([types.FETCH_MOVIE_LIST], data))
@@ -30,6 +38,9 @@ const actions = {
 }
 
 const mutations = {
+  [types.FETCH_MOVIES] (state, list) {
+    state.movies.push(list)
+  },
   [types.FETCH_MOVIE_LIST] (state, list) {
     state.movieList.title = list.title
     state.movieList.total = list.total
