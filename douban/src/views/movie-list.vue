@@ -1,7 +1,7 @@
 <template>
   <section class="grid" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
-    <h2>{{inTheaters.title}}</h2>
-    <router-link :to="{name: 'movie-detail', params: {id: item.id}}" class="item" v-for="item in inTheaters.subjects">
+    <h2>{{movieList.title}}</h2>
+    <router-link :to="{name: 'movie-detail', params: {id: item.id}}" class="item" v-for="item in movieList.subjects">
       <div class="cover">
         <div class="wp">
           <img class="img-show" :src="item.images.medium"/>
@@ -17,32 +17,31 @@
 <script>
   import Loading from '../components/loading'
   import InfiniteScroll from 'vue-infinite-scroll'
-  import {mapState} from 'vuex' // mapState为vuex中的一种方法
+  import {mapState} from 'vuex' // mapState为vuex中的一种方法，在computed中调用
   import * as types from '../store/types'  // types为别名
-  // import axios from 'axios' // axios为ajax的简化
+  import {API_TYPE} from '../store/api'
 
-  function fetchMovies (store, start) {
-    return store.dispatch([types.IN_THEATERS], start)
+  function fetchMovies (store, payload) {
+    return store.dispatch([types.FETCH_MOVIE_LIST], payload)
   }
 
   export default {
     components: {Loading}, // 组件
     directives: {InfiniteScroll}, // 插件
     data () {
-      return {
-      }
+      return {}
     },
     computed: mapState({
-      inTheaters: state => state.inTheaters,
-      busy: state => state.busy
+      movieList: state => state.movie.movieList,
+      busy: state => state.movie.busy
     }),
     mounted () {
     },
     methods: {
       loadMore () {
         this.$store.dispatch([types.SET_INFINITE_BUSY], true) // 给state传值
-        let start = this.$store.state.inTheaters.subjects.length
-        fetchMovies(this.$store, start).then(() => {
+        let start = this.$store.state.movie.movieList.subjects.length
+        fetchMovies(this.$store, {type: API_TYPE.movie.in_theaters, start: start}).then(() => {
         })
       }
     }
