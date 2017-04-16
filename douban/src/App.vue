@@ -13,6 +13,7 @@ import VuexDemo from './views/vuex-demo'
 import Movies from './views/movies'
 import MovieList from './views/movie-list.vue'
 import MovieDetail from './views/movie-detail'
+import SearchList from './views/search-list.vue'
 
 export default {
   name: 'app',
@@ -23,12 +24,21 @@ export default {
     VuexDemo,
     Movies,
     MovieList,
-    MovieDetail
+    MovieDetail,
+    SearchList
   }
 }
 </script>
 
 <style>
+@import "assets/style"
+@import "assets/list"
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
