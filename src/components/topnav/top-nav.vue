@@ -10,7 +10,9 @@
 <script>
   export default {
     data () {
-      avatar: '/static/images/avatar.jpg'
+      return {
+        avatar: '/static/images/avatar.jpg'
+      }
     }
   }
 </script>

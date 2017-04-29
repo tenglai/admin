@@ -1,15 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
-
+// 注册router组件
 Vue.use(Router)
+// 导入组件
+import message from '../components/message/message.vue'
+import friend from '../components/friend/friend.vue'
+import self from '../components/self/self.vue'
+
+// 定义路由
+let routes = [
+  {path: '/message', name: 'message', component: message},
+  {path: '/friend', name: 'friend', component: friend},
+  {path: '/self', name: 'self', component: self}
+]
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Hello',
-      component: Hello
-    }
-  ]
+  routes
 })
