@@ -7,7 +7,8 @@ import actions from './actions'
 Vue.use(Vuex)
 
 let state = {
-  num: 1
+  // 对话框是否展开
+  dialog: false
 }
 
 export default new Vuex.Store({

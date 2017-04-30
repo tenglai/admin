@@ -1,5 +1,5 @@
 <template>
-  <mu-list>
+  <mu-list @itemClick="fn">
     <!-- 标题 -->
     <mu-list-item title="Myron Liu Mr" :describeLine="1" :disableRipple="true">
       <!-- 头像 -->
@@ -78,6 +78,12 @@ export default {
       avatar2: './static/images/avatar2.jpg',
       avatar3: './static/images/avatar3.jpg',
       avatar4: './static/images/avatar4.jpg'
+    }
+  },
+  methods: {
+    fn (e) {
+      console.log(e.title)
+      this.$store.commit('openDialog')
     }
   }
 }
