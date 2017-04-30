@@ -1,58 +1,72 @@
 <template>
   <mu-list>
-    <mu-list-item title="这周末一起吃放吗?">
+    <!-- 标题 -->
+    <mu-list-item title="Myron Liu Mr" :describeLine="1" :disableRipple="true">
+      <!-- 头像 -->
       <mu-avatar :src="avatar1" slot="leftAvatar" />
+      <!-- 预览信息 -->
       <span slot="describe">
-        <span style="color:rgba(0,0,0,.87)">Myron Liu -</span>周末要来你这里出差，要不要一起吃个饭呀
+        <span style="color:rgba(0,0,0,.5)">Will you take a seat at the head of the table? It's an in</span>
       </span>
-      <mu-icon-menu slot="right" icon="more_vert" tooltip="操作">
-        <mu-menu-item title="回复" />
-        <mu-menu-item title="标记" />
-        <mu-menu-item title="删除" />
-      </mu-icon-menu>
-      <mu-divider inset/>
+      <!-- 时间与待处理 -->
+      <div class="item-right" slot="right">
+        <span class="time">16:02</span>
+        <mu-badge content="8" />
+      </div>
     </mu-list-item>
+    <!-- 分割线 -->
+    <mu-divider inset/>
 
-    <mu-list-item title="Alex Qin">
+    <!-- 标题 -->
+    <mu-list-item title="Myron Liu" :describeLine="1" :disableRipple="true">
+      <!-- 头像 -->
       <mu-avatar :src="avatar2" slot="leftAvatar" />
+      <!-- 预览信息 -->
       <span slot="describe">
-        <span style="color: rgba(0,0,0,.87)">看电影啊</span><br/>
-        我们去看电影，最近有部烂片上映，又有吐槽的了
+        <span style="color: rgba(0,0,0,.5)">-</span>Mr. liu, would you care for another helping?
       </span>
-      <mu-icon-menu slot="right" icon="more_vert" tooltip="操作">
-        <mu-menu-item title="回复" />
-        <mu-menu-item title="标记" />
-        <mu-menu-item title="删除" />
-      </mu-icon-menu>
+      <!-- 时间与待处理 -->
+      <div class="item-right" slot="right">
+        <span class="time">20:34</span>
+        <mu-badge content="16" />
+      </div>
     </mu-list-item>
-    <mu-divider inset />
+    <!-- 分割线 -->
+    <mu-divider inset/>
 
-    <mu-list-item title="LOL">
-      <mu-avatar :src="avatar3" slot="leftAvatar" />
+    <!-- 标题 -->
+    <mu-list-item title="Myron Liu" :describeLine="1" :disableRipple="true">
+      <!-- 头像 -->
+      <mu-avatar :src="avatar3" slot="leftAvatar"/>
+      <!-- 预览信息 -->
       <span slot="describe">
-        <span style="color:rgba(0,0,0,.87)">去打游戏啊</span><br/>
-        周末一起 LOL
+        <span style="color: rgba(0,0,0,.5)">Cantonese food is a bit light</span>
       </span>
-      <mu-icon-menu slot="right" icon="more_vert" tooltip="操作">
-        <mu-menu-item title="回复" />
-        <mu-menu-item title="标记" />
-        <mu-menu-item title="删除" />
-      </mu-icon-menu>
+      <!-- 时间与待处理 -->
+      <div class="item-right" slot="right">
+        <span class="time">20:34</span>
+        <mu-badge content="5" />
+      </div>
     </mu-list-item>
-    <mu-divider inset />
+    <!-- 分割线 -->
+    <mu-divider inset/>
 
-    <mu-list-item title="Myron Liu">
+    <!-- 标题 -->
+    <mu-list-item time="Myron Liu" :describeLine="1" :disableRipple="true">
+      <!-- 头像 -->
       <mu-avatar :src="avatar4" slot="leftAvatar" />
+      <!-- 预览信息 -->
       <span slot="describe">
-        <span style="color: rgba(0,0,0,.87)">哇去</span><br/>
-        这就是一个demo
+        <span style="color: rgba(0,0,0,.5)">Thank you.This is my first time to come to a Chinese.</span>
       </span>
-      <mu-icon-menu slot="right" icon="more_vert" tooltip="操作">
-        <mu-menu-item title="回复" />
-        <mu-menu-item title="标记" />
-        <mu-menu-item title="删除" />
-      </mu-icon-menu>
+      <!-- 时间与待处理 -->
+      <div class="item-right" slot="right">
+        <span class="time">20:34</span>
+        <mu-badge content="12" />
+      </div>
     </mu-list-item>
+    <!-- 分割线 -->
+    <mu-divider inset/>
   </mu-list>
 </template>
 
@@ -68,8 +82,30 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
   .mu-list{
     background: #f4f4f6;
+    .mu-item-wrapper{
+      background: #fff;
+    }
+    .mu-item-content{
+      padding-right: 10px;
+    }
+    .item-right{
+      position: relative;
+      .time{
+        display: inline-block;
+        position: absolute;
+        top: -10px;
+        left: -16px;
+      }
+      .mu-badge{
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: -10px;
+        border-radius: 5px;
+      }
+    }
   }
 </style>

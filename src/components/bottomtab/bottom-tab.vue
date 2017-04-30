@@ -1,6 +1,6 @@
 <template>
   <mu-bottom-nav :value="bottomNav" @change="handleChange" class="bottom-tab">
-    <mu-bottom-nav-item value="message" title="Message" icon="chat" />
+    <mu-bottom-nav-item value="message" title="Message" icon="chat_bubble_outline" />
     <mu-bottom-nav-item value="friends" title="Friends" icon="people" />
     <mu-bottom-nav-item value="discover" title="Discover" icon="explore" />
   </mu-bottom-nav>
@@ -16,6 +16,7 @@ export default {
   methods: {
     handleChange (val) {
       this.bottomNav = val
+      this.$route.push(val)
     }
   }
 }

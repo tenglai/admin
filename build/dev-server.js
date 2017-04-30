@@ -23,6 +23,35 @@ var autoOpenBrowser = !!config.dev.autoOpenBrowser
 var proxyTable = config.dev.proxyTable
 
 var app = express()
+
+// // mock假数据
+// let appData = require('../data.json')
+// let self = appData.self
+// let friend = appData.friend
+// let message = appData.message
+// // api
+// let apiRoutes = express.Router()
+// apiRoutes.get('/discover',(req,res)=>{
+//   res.json({
+//     errno:0,
+//     data:self
+//   })
+// })
+// apiRoutes.get('/friends',(req,res)=>{
+//   res.json({
+//     errno:0,
+//     data:friend
+//   })
+// })
+// apiRoutes.get('/message',(req,res)=>{
+//   res.json({
+//     errno:0,
+//     data:message
+//   })
+// })
+// app.use('/api',apiRoutes)
+
+
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
