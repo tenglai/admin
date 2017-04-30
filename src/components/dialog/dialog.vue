@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     closeDialog () {
-      this.$store.commit('closeDialog')
+      this.$store.commit('showDialog')
     }
   }
 }
@@ -76,10 +76,10 @@ export default {
       text-align: center;
       background: #fff;
       .top{
-        padding-left: 15px;
+        padding-left: 10px;
         .mu-icon-button{
           display: inline-block;
-          margin-left: 20px;
+          margin-left: 18px;
           vertical-align: top;
         }
       }

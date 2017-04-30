@@ -2,11 +2,11 @@
   <div class="top-wrap">
     <mu-appbar class="top-nav" :zDepth="0">
       <!-- 等待添加弹出层按钮 -->
-      <mu-avatar slot="left" :src="avatar" :size="30" />
+      <mu-avatar slot="left" :src="avatar" :size="30" @click="showSidebar(true)" />
       <div slot="default" class="title">
         <div class="title-item">Message</div>
       </div>
-      <mu-icon slot="right" value="search" color="#2e2c6b"/>
+      <mu-icon slot="right" value="search" color="#2e2c6b" @click="showSearch" />
     </mu-appbar>
   </div>
 </template>
@@ -15,6 +15,14 @@
     data () {
       return {
         avatar: '/static/images/avatar.jpg'
+      }
+    },
+    methods: {
+      showSidebar (flag) {
+        this.$store.commit('showSidebar', { flag })
+      },
+      showSearch () {
+        this.$store.commit('showSearch')
       }
     }
   }
