@@ -32,6 +32,7 @@ let self = appData.self
 let friend = appData.friend
 
 let apiRoutes = express.Router()
+
 apiRoutes.get('/self',(req, res) => {
   res.json({
     data: self
