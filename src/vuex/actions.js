@@ -40,9 +40,9 @@ const actions = {
       let data = robotData.text + robotData.url
       commit('changeList', { _id, message: data })
     } else if (robotData.code === 302000) {
-      console.log('暂不支持')
+      commit('changeList', { _id, message: '暂不支持此类对话' })
     } else {
-      console.log('暂不支持')
+      commit('changeList', { _id, message: '暂不支持此类对话' })
     }
   }
 }

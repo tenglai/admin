@@ -26,13 +26,14 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '../../common/scss/mixin.scss';
 .mu-appbar{
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: #fff;
+  background: $color-w;
   .mu-avatar{
     margin-left: 12px;
   }
@@ -44,11 +45,11 @@ export default {
       height: 34px;
       line-height: 30px;
       text-align: center;
-      border: 1px solid #2e2c6b;
+      border: 1px solid $color-b;
       border-radius: 4px;
       font-weight: 500;
-      background: #2e2c6b;
-      color: #fff;
+      background: $color-b;
+      color: $color-w;
     }
   }
 }

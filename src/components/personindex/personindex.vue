@@ -23,7 +23,7 @@
     <div class="content">
       <div class="item">
         <div v-if="activeTab === 'tab1'">
-          <mu-list-item title="QQnumber" describeText="2321756506" disabled>
+          <mu-list-item title="Phone" :describeText="userData.phone" disabled>
             <mu-icon value="voicemail" color="#2e2c6b" slot="left" />
           </mu-list-item>
         </div>
@@ -31,7 +31,7 @@
 
       <div class="item">
         <div v-if="activeTab === 'tab1'">
-          <mu-list-item title="Region" describeText="HangZhou" disabled>
+          <mu-list-item title="Region" :describeText="userData.address" disabled>
             <mu-icon value="location_on" color="#2e2c6b" slot="left" />
           </mu-list-item>
         </div>
@@ -39,18 +39,18 @@
 
       <div class="item">
         <div v-if="activeTab === 'tab1'">
-          <mu-list-item title="Birthday" describeText="20/4/96" disabled>
+          <mu-list-item title="Birthday" :describeText="userData.birthday" disabled>
             <mu-icon value="cake" color="#2e2c6b" slot="left" />
           </mu-list-item>
         </div>
       </div>
 
       <div v-if="activeTab === 'tab2'">
-        <h1>第二个tab</h1>
+        <h1>制作中...</h1>
       </div>
 
       <div v-if="activeTab === 'tab3'">
-        <h1>第三个tab</h1>
+        <h1>未完待续...</h1>
       </div>
     </div>
 
@@ -96,6 +96,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '../../common/scss/mixin.scss';
 .index{
   position: absolute;
   z-index: 102;
@@ -103,7 +104,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100vh;
-  background: #f4f4f6;
+  background: $color-g;
   .top{
     position: relative;
     height: 38vh;
@@ -118,7 +119,7 @@ export default {
         display: block;
         margin-top: 4px;
         font-size: 1.6em;
-        color: #fff;
+        color: $color-w;
       }
     }
     &:after{
@@ -153,7 +154,7 @@ export default {
     position: absolute;
     left: 0;
     bottom: 0;
-    background: #fff;
+    background: $color-w;
   }
 }
 </style>

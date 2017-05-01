@@ -59,20 +59,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @import './common/scss/mixin.scss';
+@import './common/scss/mixin.scss';
 #app{
   position: relative;
   // vh占比百分比
   min-height: 100vh;
   width: 100%;
-  background: #f4f4f6;
+  background: $color-g;
   .my-dialog{
     position: absolute;
   }
   .my-personindex{
     .bottom{
       .material-icons{
-        color: #2e2c6b;
+        color: $color-b;
       }
     }
   }
@@ -101,11 +101,11 @@ export default {
     height: 10%;
     .tab{
       .mu-bottom-item-active .mu-bottom-item-icon{
-        color: #2e2c6b;
+        color: $color-b;
       }
       .mu-bottom-item-active .mu-bottom-item-text{
         font-weight: 700;
-        color: #2e2c6b;
+        color: $color-b;
       }
     }
   }
@@ -126,7 +126,7 @@ export default {
     }
     .i-1{
       font-size: 2.5rem;
-      color: #64dd17;
+      color: $color-b;
     }
     .i-2{
       font-size: 2.5rem;

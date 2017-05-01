@@ -34,7 +34,7 @@
 
     <mu-list>
       <!-- 动态渲染 -->
-      <div v-for="item of friends">
+      <div v-for="item of friends" class="item">
         <mu-list-item :title="item.name" @click="showPersonindex(item._id)" :disableRipple="true">
           <mu-avatar :src="item.avatar" slot="leftAvatar" />
           <mu-icon value="chat_bubble" slot="right" />
@@ -63,7 +63,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '../../common/scss/mixin.scss';
 .friend{
+  .item{
+    background: $color-w;
+  }
   .title-1{
     position: relative;
     height: 8vh;
@@ -74,14 +78,14 @@ export default {
       top: 50%;
       left: 10%;
       transform: translate(-50%, -50%);
-      color: #3e3c7b;
+      color: $color-b;
     }
     .mu-icon-button{
       position: absolute;
       top: 50%;
       left: 94%;
       transform: translate(-50%, -50%);
-      color: #3e3c3b;
+      color: $color-b;
     }
     .text{
       display: inline-block;
@@ -92,10 +96,10 @@ export default {
   .tab{
     height: 12vh;
     overflow: hidden;
-    background: #fff;
+    background: $color-w;
     .mu-tabs{
-      background: #fff;
-      color: #3e3c7b;
+      background: $color-w;
+      color: $color-b;
     }
   }
   .title-2{
@@ -106,10 +110,7 @@ export default {
   .mac{
     position: relative;
     height: 10vh;
-    background: #fff;
-    .mu-avatar{
-      background: #f00;
-    }
+    background: $color-w;
   }
   .title-3{
     padding-left: 4vw;

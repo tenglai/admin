@@ -1,16 +1,7 @@
 <template>
   <div>
-    <div class="dialogue">
-      <mu-list-item :disableRipple="true">
-        <mu-avatar :src="userData.friend.avatar" slot="leftAvatar" />
-        <span slot="title">
-          <span class="content" style="color: rgba(0,0,0,.9)">请输入，与我对话Q</span>
-        </span>
-      </mu-list-item>
-    </div>
-
     <div class="dialogue" v-for="item of messageList">
-      <mu-list-item :disableRipple="true" ref="el">
+      <mu-list-item :disableRipple="true">
         <mu-avatar :src="item._id===0?userData.self.avatar:userData.friend.avatar" :slot="item._id===0?'rightAvatar':'leftAvatar'" />
         <span :slot="item._id===0?'after':'title'">
           <span class="content" style="color: rgba(0,0,0,.9)">{{item.message}}</span>
@@ -34,14 +25,15 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '../../common/scss/mixin.scss';
 .dialogue{
   margin-top: 10px;
   font-size: 16px;
-  background: #f4f4f6;
+  background: $color-g;
   .content{
     display: inline-block;
     padding: 1.5vh;
-    background: #fff;
+    background: $color-w;
   }
 }
 </style>

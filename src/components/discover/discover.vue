@@ -12,48 +12,54 @@
 
     <div class="gap-1"></div>
     <mu-list>
-      <mu-list-item title="Live">
-        <mu-icon slot="left" value="videocam" color="#64dd17" />
-        <mu-icon value="keyboard_arrow_right" slot="right" />
-      </mu-list-item>
-      <mu-divider inset />
+      <div class="item">
+        <mu-list-item title="Live">
+          <mu-icon slot="left" value="videocam" color="#64dd17" />
+          <mu-icon value="keyboard_arrow_right" slot="right" />
+        </mu-list-item>
+        <mu-divider inset />
 
-      <mu-list-item title="Video">
-        <mu-icon slot="left" value="video_library" color="#d84315" />
-        <mu-icon value="keyboard_arrow_right" slot="right" />
-      </mu-list-item>
-      <mu-divider inset />
+        <mu-list-item title="Video">
+          <mu-icon slot="left" value="video_library" color="#d84315" />
+          <mu-icon value="keyboard_arrow_right" slot="right" />
+        </mu-list-item>
+        <mu-divider inset />
 
-      <mu-list-item title="Music">
-        <mu-icon slot="left" value="headset" color="#1976d2" />
-        <mu-icon value="keyboard_arrow_right" slot="right" />
-      </mu-list-item>
+        <mu-list-item title="Music">
+          <mu-icon slot="left" value="headset" color="#1976d2" />
+          <mu-icon value="keyboard_arrow_right" slot="right" />
+        </mu-list-item>
+      </div>
     </mu-list>
 
     <mu-list>
-      <mu-list-item title="Book">
-        <mu-icon slot="left" value="book" color="#1e88e5" />
-        <mu-icon value="keyboard_arrow_right" slot="right" />
-      </mu-list-item>
-      <mu-divider inset />
+      <div class="item">
+        <mu-list-item title="Book">
+          <mu-icon slot="left" value="book" color="#1e88e5" />
+          <mu-icon value="keyboard_arrow_right" slot="right" />
+        </mu-list-item>
+        <mu-divider inset />
 
-      <mu-list-item title="News">
-        <mu-icon slot="left" value="whatshot" color="#ef6c00" />
-        <mu-icon value="keyboard_arrow_right" slot="right" />
-      </mu-list-item>
-      <mu-divider inset />
+        <mu-list-item title="News">
+          <mu-icon slot="left" value="whatshot" color="#ef6c00" />
+          <mu-icon value="keyboard_arrow_right" slot="right" />
+        </mu-list-item>
+        <mu-divider inset />
 
-      <mu-list-item title="Game">
-        <mu-icon slot="left" value="videogame_asset" color="#00e5ff" />
-        <mu-icon value="keyboard_arrow_right" slot="right" />
-      </mu-list-item>
+        <mu-list-item title="Game">
+          <mu-icon slot="left" value="videogame_asset" color="#00e5ff" />
+          <mu-icon value="keyboard_arrow_right" slot="right" />
+        </mu-list-item>
+      </div>
     </mu-list>
 
     <mu-list>
-      <mu-list-item title="Mucket">
-        <mu-icon slot="left" value="shopping_cart" color="#1e88e5" />
-        <mu-icon value="keyboard_arrow_right" slot="right" />
-      </mu-list-item>
+      <div class="item">
+        <mu-list-item title="Mucket">
+          <mu-icon slot="left" value="shopping_cart" color="#1e88e5" />
+          <mu-icon value="keyboard_arrow_right" slot="right" />
+        </mu-list-item>
+      </div>
     </mu-list>
   </div>
 </template>
@@ -61,7 +67,11 @@
 <script>
 </script>
 <style lang="scss" scoped>
+  @import '../../common/scss/mixin.scss';
   .friend{
+    .item{
+      background: $color-w;
+    }
     .gap{
       position: relative;
       height: 2vh;
@@ -72,10 +82,10 @@
     .tab{
       height: 12vh;
       overflow: hidden;
-      background: #fff;
+      background: $color-w;
       .mu-tabs{
-        background: #fff;
-        color: #3e3c7b;
+        background: $color-w;
+        color: $color-b;
       }
     }
   }

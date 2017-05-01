@@ -48,9 +48,10 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
+@import '../../common/scss/mixin.scss';
 .mu-drawer{
-  color: #2e2c6b;
+  color: $color-b;
   .content{
     position: relative;
     height: 30vh;

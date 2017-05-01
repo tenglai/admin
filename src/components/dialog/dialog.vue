@@ -1,24 +1,26 @@
 <template>
   <div class="dialog">
     <mu-appbar :title="userData.self.name" :zDepth="0">
-      <mu-icon-button icon="arrow_back" slot="left" @click="showDialog"/>
+      <mu-icon-button icon="arrow_back" slot="left" @click="showDialog_x"/>
       <div class="right-top" slot="right">
         <mu-icon-button icon="videocam" />
         <mu-icon-button icon="call" />
-        <mu-icon-button icon="person" @click="showPersonindex" />
+        <mu-icon-button icon="person" @click="showPersonindex_x" />
       </div>
     </mu-appbar>
 
     <!-- 对话内容 -->
     <div>
       <div class="patch-1"></div>
-      <my-dialogue :userData="userData" class="dialogue" ref="child" @scrollC="scrollC"></my-dialogue>
+      <my-dialogue :userData="userData" class="dialogue" @scrollC="scrollC"></my-dialogue>
       <div class="patch-2"></div>
+      <!-- 锚点 -->
+      <a name="1" href="#1" ref="end" style="height:0;color:rgba(0,0,0,0)">.</a>
     </div>
 
-    <div class="footer">
+    <div class="footer" ref="footer">
       <div class="top">
-        <mu-text-field hintText="输入文字" v-model="value" />
+        <mu-text-field hintText="输入文字" v-model="value" @focus="focus" @blur="blur" />
         <mu-icon-button icon="send" @click="sendValue" />
       </div>
       <div class="bottom">
@@ -34,6 +36,7 @@
   </div>
 </template>
 <script>
+import { mapState, mapMutations } from 'vuex'
 import myDialogue from './dialogue'
 export default {
   components: {
@@ -41,48 +44,75 @@ export default {
   },
   data () {
     return {
-      value: ''
+      value: '',
+      timer: {}
     }
   },
   computed: {
+    ...mapState({
+      self: state => state.data.self,
+      headerTitle: 'headerTitle'
+    }),
     userData () {
       return {
-        self: this.$store.state.data.self,
+        self: this.self,
         friend: this.$store.getters.friend
       }
     }
   },
   methods: {
-    showDialog () {
-      this.$store.commit('showDialog')
-      this.$store.commit('getActiveId', { activeId: 0 })
+    ...mapMutations(['showDialog', 'getActiveId', 'showPersonindex']),
+    showDialog_x () {
+      this.showDialog()
+      this.getActiveId({ activeId: 0 })
+      this.$router.push(this.headerTitle)
     },
-    showPersonindex () {
-      this.$store.commit('showDialog')
-      this.$store.commit('showPersonindex')
+    showPersonindex_x () {
+      this.showDialog()
+      this.showPersonindex()
+      this.$router.push(this.headerTitle)
     },
     sendValue () {
-      this.$store.dispatch('sendValue', {
-        _id: this.userData.friend._id,
-        message: this.value,
-        that: this
-      })
+      if (this.value.length) {
+        this.$store.dispatch('sendValue', {
+          _id: this.userData.friend._id,
+          message: this.value,
+          that: this
+        })
+      } else {
+        console.log('不能为空')
+      }
       this.value = ''
     },
+    // 监听子组件事件
     scrollC () {
       console.log('子组件更新')
+      // 取巧的方法,每次组件更新后模拟点击,破坏性的修改哈希值,但是简便(此处可以修改为正常控制滚动条)
+      this.$refs.end.click()
+    },
+    // 输入框获得焦点时触发
+    focus () {
+      this.timer.T = setInterval(() => {
+        // 完美解决输入框被软键盘遮挡
+        this.$refs.footer.scrollIntoView(false)
+      }, 200)
+    },
+    blur () {
+      // 输入框失去焦点时清空定时器
+      clearInterval(this.timer.T)
     }
   }
 }
 </script>
 <style lang="scss" scoped>
+  @import '../../common/scss/mixin.scss';
   .dialog{
     z-index: 999;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: #f4f4f6;
+    background: $color-g;
     .patch-1{
       height: 60px;
     }
@@ -94,8 +124,8 @@ export default {
       top: 0;
       left: 0;
       width: 100%;
-      background: #fff;
-      color: #2e2c6b;
+      background: $color-w;
+      color: $color-b;
     }
     .dialogue{
       width: 100%;
@@ -107,7 +137,7 @@ export default {
       width: 100%;
       height: 90px;
       text-align: center;
-      background: #fff;
+      background: $color-w;
       .top{
         display: flex;
         justify-content: center;

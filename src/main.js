@@ -6,6 +6,18 @@ import App from './App'
 import router from './router/index'
 import store from './vuex/store'
 
+// 懒加载模块
+import VueLazyload from 'vue-lazyload'
+
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: 'static/images/lazy.jpg',
+  loading: 'static/images/lazy.jpg',
+  attempt: 1,
+  listenEvents: [ 'scroll' ]
+})
+
+// 基础css样式
 import './common/scss/base.scss'
 
 // 加载ui
