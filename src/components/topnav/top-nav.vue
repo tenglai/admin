@@ -2,30 +2,28 @@
   <div class="top-wrap">
     <mu-appbar class="top-nav" :zDepth="0">
       <!-- 等待添加弹出层按钮 -->
-      <mu-avatar slot="left" :src="avatar" :size="30" @click="showSidebar(true)" />
+      <mu-avatar slot="left" :src="avatar" :size="30" @click="showSidebar_x(true)" />
       <div slot="default" class="title">
-        <div class="title-item">Message</div>
+        <div class="title-item">{{headerTitle}}</div>
       </div>
       <mu-icon slot="right" value="search" color="#2e2c6b" @click="showSearch" />
     </mu-appbar>
   </div>
 </template>
 <script>
-  export default {
-    data () {
-      return {
-        avatar: '/static/images/avatar.jpg'
-      }
-    },
-    methods: {
-      showSidebar (flag) {
-        this.$store.commit('showSidebar', { flag })
-      },
-      showSearch () {
-        this.$store.commit('showSearch')
-      }
+import { mapState, mapMutations } from 'vuex'
+export default {
+  computed: mapState({
+    avatar: state => state.data.self.avatar,
+    headerTitle: 'headerTitle'
+  }),
+  methods: {
+    ...mapMutations(['showSidebar', 'showSearch']),
+    showSidebar_x (flag) {
+      this.showSidebar({ flag })
     }
   }
+}
 </script>
 <style lang="scss" scoped>
 .mu-appbar{

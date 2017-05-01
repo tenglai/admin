@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-    <div class="top">
+    <div class="top" :style="{backgroundImage: `url(${userData.avatar})`}">
       <mu-appbar title="name" :zDepth="0">
         <mu-icon-button icon="arrow_back" slot="left" @click="showPersonindex" />
         <div class="right-top" slot="right">
@@ -9,8 +9,8 @@
       </mu-appbar>
 
       <div class="c">
-        <mu-avatar :src="avatar1" :size="96" />
-        <span class="name">Name</span>
+        <mu-avatar :src="userData.avatar" :size="96" />
+        <span class="name">{{userData.name}}</span>
       </div>
 
       <mu-tabs :value="activeTab" @change="handleTabChange">
@@ -46,13 +46,11 @@
       </div>
 
       <div v-if="activeTab === 'tab2'">
-        <h2>Tab Two</h2>
-        <p>这是第二个 tab</p>
+        <h1>第二个tab</h1>
       </div>
 
       <div v-if="activeTab === 'tab3'">
-        <h2>Tab Two</h2>
-        <p>这是第三个 tab</p>
+        <h1>第三个tab</h1>
       </div>
     </div>
 
@@ -67,8 +65,17 @@
 export default {
   data () {
     return {
-      avatar1: '/static/images/avatar1.jpg',
       activeTab: 'tab1'
+    }
+  },
+  computed: {
+    userData () {
+      // 判断是否有当前活跃的friend,没有的话就获取自己的数据,展示个人页面,有的话就展示当前活跃朋友的页面
+      if (this.$store.state.activeId === 0) {
+        return this.$store.state.data.self
+      } else {
+        return this.$store.getters.friend
+      }
     }
   },
   methods: {
@@ -76,11 +83,14 @@ export default {
       this.activeTab = val
     },
     showPersonindex () {
+      this.$store.commit('getActiveId', { activeId: 0 })
       this.$store.commit('showPersonindex')
     },
     showDialog () {
-      this.$store.commit('showDialog')
-      this.$store.commit('showPersonindex')
+      if (this.$store.state.activeId !== 0) {
+        this.$store.commit('showDialog')
+        this.$store.commit('showPersonindex')
+      }
     }
   }
 }

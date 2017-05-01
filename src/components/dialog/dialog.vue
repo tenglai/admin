@@ -1,26 +1,25 @@
 <template>
   <div class="dialog">
-    <mu-appbar title="name" :zDepth="0">
-      <mu-icon-button icon="arrow_back" slot="left" @click="closeDialog"/>
+    <mu-appbar :title="userData.self.name" :zDepth="0">
+      <mu-icon-button icon="arrow_back" slot="left" @click="showDialog"/>
       <div class="right-top" slot="right">
         <mu-icon-button icon="videocam" />
         <mu-icon-button icon="call" />
-        <mu-icon-button icon="person" />
+        <mu-icon-button icon="person" @click="showPersonindex" />
       </div>
     </mu-appbar>
 
-    <!-- 经典sticky footers布局 -->
-    <div class="sticky-wrap">
-      <div class="sticky-main clear">
-        <!-- 对话内容 -->
-        <my-dialogue></my-dialogue>
-      </div>
+    <!-- 对话内容 -->
+    <div>
+      <div class="patch-1"></div>
+      <my-dialogue :userData="userData" class="dialogue" ref="child" @scrollC="scrollC"></my-dialogue>
+      <div class="patch-2"></div>
     </div>
 
-    <div class="sticky-footer">
+    <div class="footer">
       <div class="top">
-        <mu-text-field hintText="输入文字" />
-        <mu-icon-button icon="send" />
+        <mu-text-field hintText="输入文字" v-model="value" />
+        <mu-icon-button icon="send" @click="sendValue" />
       </div>
       <div class="bottom">
         <mu-icon-button icon="mic_none" />
@@ -40,9 +39,38 @@ export default {
   components: {
     myDialogue
   },
+  data () {
+    return {
+      value: ''
+    }
+  },
+  computed: {
+    userData () {
+      return {
+        self: this.$store.state.data.self,
+        friend: this.$store.getters.friend
+      }
+    }
+  },
   methods: {
-    closeDialog () {
+    showDialog () {
       this.$store.commit('showDialog')
+      this.$store.commit('getActiveId', { activeId: 0 })
+    },
+    showPersonindex () {
+      this.$store.commit('showDialog')
+      this.$store.commit('showPersonindex')
+    },
+    sendValue () {
+      this.$store.dispatch('sendValue', {
+        _id: this.userData.friend._id,
+        message: this.value,
+        that: this
+      })
+      this.value = ''
+    },
+    scrollC () {
+      console.log('子组件更新')
     }
   }
 }
@@ -55,28 +83,35 @@ export default {
     width: 100vw;
     height: 100vh;
     background: #f4f4f6;
+    .patch-1{
+      height: 60px;
+    }
+    .patch-2{
+      height: 90px;
+    }
     .mu-appbar{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
       background: #fff;
       color: #2e2c6b;
     }
-    .sticky-wrap{
-      height: auto;
-      min-height: 100%;
-      background: #f4f4f6;
-      .sticky-main{
-        padding-bottom: 146px;
-        width: 100%;
-      }
+    .dialogue{
+      width: 100%;
     }
-    .sticky-footer{
-      position: relative;
-      margin-top: -146px;
-      height: 146px;
-      clear: both;
+    .footer{
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 90px;
       text-align: center;
       background: #fff;
       .top{
-        padding-left: 10px;
+        display: flex;
+        justify-content: center;
+        padding: 0 10px;
         .mu-icon-button{
           display: inline-block;
           margin-left: 18px;
@@ -85,7 +120,7 @@ export default {
       }
       .bottom{
         margin-top: -14px;
-        color: rgba(0,0,0,.3);
+        color: rgba(0,0,0,.3)
       }
     }
   }

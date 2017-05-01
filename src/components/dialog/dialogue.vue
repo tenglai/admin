@@ -2,27 +2,18 @@
   <div>
     <div class="dialogue">
       <mu-list-item :disableRipple="true">
-        <mu-avatar :src="avatar1" slot="leftAvatar" />
+        <mu-avatar :src="userData.friend.avatar" slot="leftAvatar" />
         <span slot="title">
-          <span class="content" style="color:rgba(0,0,0,.9)">今天天气怎么样？</span>
+          <span class="content" style="color: rgba(0,0,0,.9)">请输入，与我对话Q</span>
         </span>
       </mu-list-item>
     </div>
 
-    <div class="dialogue">
-      <mu-list-item :disableRipple="true">
-        <mu-avatar :src="avatar2" slot="rightAvatar" />
-        <span slot="after">
-          <span class="content-right" style="color:rgba(0,0,0,.9)">不怎么样，下雨</span>
-        </span>
-      </mu-list-item>
-    </div>
-
-    <div class="dialogue">
-      <mu-list-item :disableRipple="true">
-        <mu-avatar :src="avatar1" slot="leftAvatar" />
-        <span slot="title">
-          <span class="content" style="color:rgba(0,0,0,.9)">哦</span>
+    <div class="dialogue" v-for="item of messageList">
+      <mu-list-item :disableRipple="true" ref="el">
+        <mu-avatar :src="item._id===0?userData.self.avatar:userData.friend.avatar" :slot="item._id===0?'rightAvatar':'leftAvatar'" />
+        <span :slot="item._id===0?'after':'title'">
+          <span class="content" style="color: rgba(0,0,0,.9)">{{item.message}}</span>
         </span>
       </mu-list-item>
     </div>
@@ -30,12 +21,15 @@
 </template>
 <script>
 export default {
-  data () {
-    return {
-      avatar1: './static/images/avatar1.jpg',
-      avatar2: './static/images/avatar2.jpg',
-      avatar3: './static/images/avatar3.jpg'
+  props: ['userData'],
+  computed: {
+    messageList () {
+      let message = this.$store.state.messageList[this.userData.friend._id - 1]
+      return message.list
     }
+  },
+  updated () {
+    this.$emit('scrollC')
   }
 }
 </script>
@@ -43,15 +37,10 @@ export default {
 .dialogue{
   margin-top: 10px;
   font-size: 16px;
+  background: #f4f4f6;
   .content{
     display: inline-block;
-    padding: 12px;
-    background: #fff;
-  }
-  .content-right{
-    display: inline-block;
-    margin-right: 6px;
-    padding: 12px;
+    padding: 1.5vh;
     background: #fff;
   }
 }

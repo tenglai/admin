@@ -14,9 +14,13 @@ export default {
     }
   },
   methods: {
+    // 点击按钮
     handleChange (val) {
       this.bottomNav = val
-      this.$route.push(val)
+      // 路由跳转至当前点击的页面
+      this.$router.push(val)
+      // 改变title
+      this.$store.commit('changTitle', { title: val })
     }
   }
 }

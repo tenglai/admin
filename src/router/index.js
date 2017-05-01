@@ -6,14 +6,12 @@ Vue.use(Router)
 import message from '../components/message/message.vue'
 import friends from '../components/friends/friends.vue'
 import discover from '../components/discover/discover.vue'
-import dialog from '../components/dialog/dialog.vue'
 
 // 定义路由
 let routes = [
   {path: '/message', name: 'message', component: message},
   {path: '/friends', name: 'friends', component: friends},
-  {path: '/discover', name: 'discover', component: discover},
-  {path: '/dialog', name: 'dialog', component: dialog}
+  {path: '/discover', name: 'discover', component: discover}
 ]
 
 export default new Router({

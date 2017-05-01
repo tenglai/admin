@@ -24,7 +24,13 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   template: '<App/>',
+  // 注入路由
   router,
+  // 注入vuex的store
   store,
-  components: { App }
+  components: { App },
+  // 组件创建前,进行异步数据请求
+  beforeCreate () {
+    this.$store.dispatch('getAllData', this)
+  }
 })
