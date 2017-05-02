@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="dialogue" v-for="item of messageList">
+    <div class="dialogue" v-for="item of messageList_x">
       <mu-list-item :disableRipple="true">
         <mu-avatar :src="item._id===0?userData.self.avatar:userData.friend.avatar" :slot="item._id===0?'rightAvatar':'leftAvatar'" />
         <span :slot="item._id===0?'after':'title'">
@@ -11,11 +11,15 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
   props: ['userData'],
   computed: {
-    messageList () {
-      let message = this.$store.state.messageList[this.userData.friend._id - 1]
+    ...mapGetters(['nowMessageList']),
+    // 获取到当前的聊天记录
+    messageList_x () {
+      // 筛选信息
+      let message = this.nowMessageList.filter(x => x._id === this.userData.friend._id)[0]
       return message.list
     }
   },

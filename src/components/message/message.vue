@@ -2,7 +2,7 @@
   <!-- 判断ajax结束后,且有消息列表存在才开始渲染组件,防止报错 -->
   <mu-list v-if="isAjax&&nowMessageList">
     <!-- 设置列表删除时动态效果 -->
-    <div v-for="(item, index) of nowMessageList" :class="[{swipeleft: isSwipe[index]},'wrap']" @click="getActiveId_x(item._id, index)" ref="child" :key="index">
+    <div v-for="(item, index) of nowMessageList" :class="[{swipeleft: isSwipe[index]},'wrap']" @click="getActiveId_x(item._id)" ref="child" :key="index">
       <mu-list-item :title="item.friend.name" :describeLine="1" :disableRipple="true" class="list-item">
         <!-- 头像 -->
         <mu-avatar :src="item.friend.avatar" slot="leftAvatar" />
