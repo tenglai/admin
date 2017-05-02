@@ -70,10 +70,8 @@ export default {
     position: absolute;
   }
   .my-personindex{
-    .bottom{
-      .material-icons{
-        color: $color-b;
-      }
+    .material-icons{
+      color: $color-b;
     }
   }
   .container-top{

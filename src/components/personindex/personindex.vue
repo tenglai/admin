@@ -56,7 +56,7 @@
 
     <mu-tabs class="bottom">
       <mu-tab value="tab1" icon="videocam" />
-      <mu-tab value="tab2" icon="phone" />
+      <mu-tab value="tab2" icon="phone" color="#f00" />
       <mu-tab value="tab3" icon="chat_bubble" @click="showDialog_x" />
     </mu-tabs>
   </div>
@@ -64,6 +64,7 @@
 <script>
 import { mapState, mapGetters, mapMutations } from 'vuex'
 export default {
+  name: 'personindex',
   data () {
     return {
       activeTab: 'tab1'

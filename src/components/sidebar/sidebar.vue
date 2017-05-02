@@ -29,16 +29,13 @@
   </mu-drawer>
 </template>
 <script>
-import { mapMutations } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
-  computed: {
-    sidebar () {
-      return this.$store.state.sidebar
-    },
-    self () {
-      return this.$store.state.data.self
-    }
-  },
+  name: 'sidebar',
+  computed: mapState({
+    sidebar: 'sidebar',
+    self: state => state.data.self
+  }),
   methods: {
     ...mapMutations(['showSidebar', 'showPersonindex']),
     showPersonindex_x () {

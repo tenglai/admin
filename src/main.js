@@ -14,10 +14,10 @@ Vue.use(VueLazyload, {
   error: 'static/images/lazy.jpg',
   loading: 'static/images/lazy.jpg',
   attempt: 1,
-  listenEvents: [ 'scroll' ]
+  listenEvents: ['scroll']
 })
 
-// 基础css样式
+// 引入基础css样式
 import './common/scss/base.scss'
 
 // 加载ui

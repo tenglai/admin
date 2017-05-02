@@ -29,6 +29,7 @@
 <script>
 import { mapState, mapGetters, mapMutations } from 'vuex'
 export default {
+  name: 'message',
   data () {
     return {
       isSwipe: [false, false, false]

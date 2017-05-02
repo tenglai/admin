@@ -13,6 +13,7 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 export default {
+  name: 'topNav',
   computed: mapState({
     avatar: state => state.data.self.avatar,
     headerTitle: 'headerTitle'

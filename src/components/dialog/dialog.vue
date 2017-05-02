@@ -20,7 +20,7 @@
 
     <div class="footer" ref="footer">
       <div class="top">
-        <mu-text-field hintText="输入文字" v-model="value" @focus="focus" @blur="blur" />
+        <mu-text-field hintText="输入文字" v-model="value" @focus="focus" @blur="blur" @keyup.enter.native="sendValue" />
         <mu-icon-button icon="send" @click="sendValue" />
       </div>
       <div class="bottom">
@@ -40,6 +40,7 @@ import { mapState, mapMutations } from 'vuex'
 import myDialogue from './dialogue'
 export default {
   components: {
+    name: 'dialog',
     myDialogue
   },
   data () {

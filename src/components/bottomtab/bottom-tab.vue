@@ -8,6 +8,7 @@
 
 <script>
 export default {
+  name: 'bottomTab',
   data () {
     return {
       bottomNav: 'message'

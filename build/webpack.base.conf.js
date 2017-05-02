@@ -21,12 +21,18 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
+      // 引入muse的UI
+      'muse-components': 'muse-ui/src',
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src')
     }
   },
   module: {
     rules: [
+      {
+        test: /muse-ui.src.*?js$/,
+        loader: 'babel-loader'
+      },
       {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
