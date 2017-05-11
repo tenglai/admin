@@ -5,10 +5,12 @@ import axios from 'axios'
 import App from './App'
 import router from './router/index'
 import store from './vuex/store'
+import MuseUi from './muse-ui.config'
+// import './common/stylus/base.styl'
+Vue.use(MuseUi)
 
-// 懒加载模块
+// 懒加载模块,由于暂时没有几张图，主要为后续使用做准备，使用方法见https://github.com/hilongjw/vue-lazyload
 import VueLazyload from 'vue-lazyload'
-
 Vue.use(VueLazyload, {
   preLoad: 1.3,
   error: 'static/images/lazy.jpg',
@@ -16,14 +18,6 @@ Vue.use(VueLazyload, {
   attempt: 1,
   listenEvents: ['scroll']
 })
-
-// 引入基础css样式
-import './common/scss/base.scss'
-
-// 加载ui
-import MuseUI from 'muse-ui'
-import 'muse-ui/dist/muse-ui.css'
-Vue.use(MuseUI)
 
 // 在vue原型中添加$http方法等于axios
 Vue.prototype.$http = axios
@@ -41,8 +35,8 @@ new Vue({
   // 注入vuex的store
   store,
   components: { App },
-  // 组件创建前,进行异步数据请求
-  beforeCreate () {
+  // 组件创建前，进行异步数据数据请求
+  beforeCreate() {
     this.$store.dispatch('getAllData', this)
   }
 })

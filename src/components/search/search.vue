@@ -1,27 +1,40 @@
 <template>
   <div class="search">
     <mu-appbar :zDepth="0">
-      <mu-icon-button icon="arrow_back" slot="left" @click="showSearch" />
-      <mu-text-field class="appbar-search-field" slot="default" hintText="..." v-model="value" @input="input" />
-      <mu-icon-button icon="search" slot="right" />
+  
+      <mu-icon-button icon="arrow_back"
+                      slot="left"
+                      @click="showSearch" />
+  
+      <mu-text-field class="appbar-search-field"
+                     slot="default"
+                     hintText="...."
+                     v-model="value"
+                     @input="input" />
+      <mu-icon-button icon="search"
+                      slot="right" />
     </mu-appbar>
-
+  
     <mu-list>
-      <mu-sub-header>在输入框中,输入姓名或者Phone搜索好友</mu-sub-header>
+      <mu-sub-header>在输入框中，输入名字或者Phone搜索好友</mu-sub-header>
       <div v-for="item of friend">
-        <mu-list-item :title="item.name" @click="showPersonindex_x(item._id)">
-          <mu-avatar :src="item.avatar" slot="leftAvatar" />
-          <mu-icon value="chat_bubble" slot="right" />
+        <mu-list-item :title="item.name"
+                      @click="showPersonindex_x(item._id)">
+          <mu-avatar :src="item.avatar"
+                     slot="leftAvatar" />
+          <mu-icon value="chat_bubble"
+                   slot="right" />
         </mu-list-item>
       </div>
     </mu-list>
+  
   </div>
 </template>
 <script>
 import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'search',
-  data () {
+  data() {
     return {
       value: '',
       friend: []
@@ -35,12 +48,12 @@ export default {
   methods: {
     ...mapMutations(['showSearch', 'showPersonindex', 'getActiveId']),
     // 点击展示个人主页
-    showPersonindex_x (id) {
+    showPersonindex_x(id) {
       this.showSearch()
       this.getActiveId({ activeId: id })
       this.showPersonindex()
     },
-    input (val) {
+    input(val) {
       // 判断输入的值是否是数字
       if (val === '') {
         this.friend = []
@@ -67,20 +80,20 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-@import '../../common/scss/mixin.scss';
-.search{
-  position: absolute;
-  z-index: 102;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: $color-g;
-  .mu-appbar{
-    height: 10vh;
-    color: #000;
-    background: $color-w;
-  }
-}
+<style lang="stylus" scoped>
+@import '../../common/stylus/mixin.styl'
+.search
+  position: absolute
+  z-index: 102
+  top: 0
+  left: 0
+  width: 100%
+  height: 100vh
+  background: color-g
+  .mu-appbar
+    height: 10vh
+    color: #000
+    background: color-w
+
+
 </style>

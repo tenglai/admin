@@ -10,9 +10,7 @@ var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
 var proxyMiddleware = require('http-proxy-middleware')
-var webpackConfig = process.env.NODE_ENV === 'testing'
-  ? require('./webpack.prod.conf')
-  : require('./webpack.dev.conf')
+var webpackConfig = require('./webpack.dev.conf')
 
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
@@ -26,6 +24,7 @@ var app = express()
 
 // 进行http请求用到的模块
 const superagent = require('superagent')
+
 // mock假数据
 let appData = require('../mockdata.json')
 let self = appData.self
@@ -33,26 +32,26 @@ let friend = appData.friend
 
 let apiRoutes = express.Router()
 
-apiRoutes.get('/self',(req, res) => {
+apiRoutes.get('/self', (req, res) => {
   res.json({
-    data: self
+    data:self,
   })
 })
-apiRoutes.get('/friends',(req, res) => {
+apiRoutes.get('/friends', (req, res) => {
   res.json({
-    data: friend
+    data:friend,
   })
 })
 
 // 聊天机器人api接入
 apiRoutes.get('/robotapi', (req, res) => {
-  let response = res
+  let response=res
   let info = req.query.message
   let userid = req.query.id
   let key = '069e90c4262243bf964ad95014371384'
   superagent.post('http://www.tuling123.com/openapi/api')
   .send({info, userid, key})
-  .end((err, res) => {
+  .end((err,res) => {
     if(err){
       console.log(err)
     }
@@ -63,6 +62,9 @@ apiRoutes.get('/robotapi', (req, res) => {
 })
 
 app.use('/api',apiRoutes)
+
+
+
 
 
 var compiler = webpack(webpackConfig)
@@ -108,26 +110,18 @@ app.use(staticPath, express.static('./static'))
 
 var uri = 'http://localhost:' + port
 
-var _resolve
-var readyPromise = new Promise(resolve => {
-  _resolve = resolve
+devMiddleware.waitUntilValid(function () {
+  console.log('> Listening at ' + uri + '\n')
 })
 
-console.log('> Starting dev server...')
-devMiddleware.waitUntilValid(() => {
-  console.log('> Listening at ' + uri + '\n')
+module.exports = app.listen(port, function (err) {
+  if (err) {
+    console.log(err)
+    return
+  }
+
   // when env is testing, don't need open it
   if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
     opn(uri)
   }
-  _resolve()
 })
-
-var server = app.listen(port)
-
-module.exports = {
-  ready: readyPromise,
-  close: () => {
-    server.close()
-  }
-}
