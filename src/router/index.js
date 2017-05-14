@@ -6,7 +6,7 @@ Vue.use(Router)
 import message from '../components/message/message.vue'
 import friends from '../components/friends/friends.vue'
 import discover from '../components/discover/discover.vue'
-// 配置路由
+
 let routes = [
   { path: '/message', name: 'message', component: message },
   { path: '/friends', name: 'friends', component: friends },
