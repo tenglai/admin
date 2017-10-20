@@ -8,7 +8,8 @@ router.get('/', function *(next) {
 
 // 登录页路由
 router.get('/login', function *(next) {
-  this.body = 'login页面';
+  // this.body = 'login页面';
+  yield this.render('login',{});
 });
 
 router.get('/bar', function *(next) {

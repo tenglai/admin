@@ -6,12 +6,133 @@
 	<!-- <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 	<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
-
+	
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
 	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
+	<!-- jQuery文件 务必在bootstrap.min.js之前引入 -->
 	<script src="/javascripts/jquery.min.js"></script>
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="/javascripts/bootstrap.min.js"></script>
+
+	<!-- <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" /> -->
+	<style>
+		.horul{
+			float: left;
+			font-size: 1.5em;
+			line-height: 2em;
+		}
+		.horul li{
+			display: inline-block;
+			list-style: none;
+			height: 25px;
+			width: 3em;
+			text-align: center;
+		}
+		.menu{
+			width: 1024px;
+			background-color: #005f3d;
+			height: 1.5em;
+			margin: 0 auto;
+			font-size: 1.5em;
+			display: hidden;
+			text-align: center;
+		}
+		.menu span{
+			float: left;
+			display: inline-block;
+			color: #ffffff;
+			margin-left: 1em;
+		}
+		.answer tr td div{
+			width: 45px;
+			height: 45px;
+			background-color: green;
+			color: #ffffff;
+			text-align: center;
+		}
+		a,a:hover,a:visited{
+			color: #ffffff;
+		}
+	</style>
 </head>
 <body>
-	<button type="button" class="btn btn-danger">Action</button>
+	<div style="width:1024px;height:3em;margin:1em auto;">
+		<span class="glyphicon glyphicon-comment" style="float:left;font-size:2em;"><b>源库</b></span>
+		&nbsp;
+		<ul class="horul">
+			<li>问答</li>
+			<li>文章</li>
+			<li>笔记</li>
+			<li>活动</li>
+		</ul>
+		&nbsp;
+		<div style="float:right;line-height:2em;">
+			<input type="text" placeholder="请输入关键词" style="width:240px;height:30px;" />
+			<span class="glyphicon glyphicon-zoom-in" style="font-size:1.5em;cursor:pointer;" />
+			&nbsp;
+			<input type="button" class="btn btn-success" value="登录/注册" />
+			&nbsp;
+		</div>
+	</div>
+	<div class="menu">
+		<span>home</span>
+		<span>|</span>
+		<span><a href="#">javascript</a></span>
+		<span>php</span>
+		<span>python</span>
+		<span>java</span>
+		<span>mysql</span>
+		<span>ios</span>
+		<span>android</span>
+		<span>node.js</span>
+		<span>html5</span>
+		<span>lunux</span>
+		<span>c++</span>
+		<span>...</span>
+	</div>
+	<div style="width:1024px;margin:1em auto;">
+		<div style="border:1px solid green;width:720px;float:left;">
+			<ul class="horul">
+				<li>最新</li>
+				<li>最热</li>
+				<li>未回答</li>
+			</ul>
+			<table class="table">
+				<tbody class="answer">
+					<tr>
+						<td>
+							<div>0<br/>回答</div>
+						</td>
+						<td>36<br/>浏览</td>
+						<td>node.js如何与vue.js两线开发</td>
+					</tr>
+					<tr>
+						<td><div>3<br/>回答</div></td>
+						<td>12<br/>浏览</td>
+						<td>node.js如何与vue.js两线开发</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div style="border:1px solid green;width:300px;float:right;">
+			<table class="table">
+				<caption>排行榜</caption>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>Bangalore</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Mumbal</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Bangalore</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </body>
 </html>
