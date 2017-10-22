@@ -4,7 +4,10 @@ var app = require('koa')()
   , views = require('koa-views')
   , onerror = require('koa-onerror');
 
+// 引入 路由模块
+// 首页(默认页面)
 var index = require('./routes/index');
+// users(用户页面)
 var users = require('./routes/users');
 
 // error handler

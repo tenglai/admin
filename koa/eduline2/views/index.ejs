@@ -70,7 +70,8 @@
 			<input type="text" placeholder="请输入关键词" style="width:240px;height:30px;" />
 			<span class="glyphicon glyphicon-zoom-in" style="font-size:1.5em;cursor:pointer;" />
 			&nbsp;
-			<input type="button" class="btn btn-success" value="登录/注册" />
+			<!-- <input type="button" class="btn btn-success" value="登录/注册" /> -->
+			<input type="button" class="btn btn-success" data-toggle="modal" data-target="#loginModal" href="./users/login" value="登录/注册" />
 			&nbsp;
 		</div>
 	</div>
@@ -132,6 +133,14 @@
 					</tr>
 				</tbody>
 			</table>
+		</div>
+	</div>
+	<!-- 模态框 -->
+	<div class="modal fade" id="loginModal">
+		<div class="modal-dialog">
+			<div class="modal-content" style="width:850px;">
+				<!-- href 内容 -->
+			</div>
 		</div>
 	</div>
 </body>

@@ -2,13 +2,16 @@ const router = require('koa-router')()
 
 router.prefix('/users')
 
-router.get('/', function (ctx, next) {
-  ctx.body = 'this is a users response!'
+// 默认路由
+router.get('/', async function (ctx, next) {
+  // ctx.body = 'this is a users response!'
+  ctx.state = {
+  	title:'我是koa2的login'
+  };
 })
 
 // 登录页路由
-router.get('/login', function *(next) {
-  // this.body = 'login页面';
+router.get('/login', async function (ctx, next) {
   await ctx.render('login', {});
 });
 
