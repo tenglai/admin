@@ -22,7 +22,7 @@ app.use(require('koa-static')(__dirname + '/public'))
 
 app.use(views(__dirname + '/views', {
   // extension: 'pug'
-  extension: 'ejs' // 默认使用ejs语法
+  default: 'ejs' // 默认使用ejs语法
 }))
 
 // logger

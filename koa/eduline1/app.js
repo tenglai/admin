@@ -4,7 +4,6 @@ var app = require('koa')()
   , views = require('koa-views')
   , onerror = require('koa-onerror');
 
-// 导入 页面路由
 var index = require('./routes/index');
 var users = require('./routes/users');
 
