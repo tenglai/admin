@@ -1,8 +1,10 @@
 const pathTo = require('path');
 const fs = require('fs-extra');
 const webpack = require('webpack');
-const entry = {};
-const weexEntry = {};
+/***************** 配置入口文件 start *****************/
+const entry = {index: pathTo.resolve('src', 'entry.js')};
+const weexEntry = {index: pathTo.resolve('src', 'entry.js')};
+/****************** 配置入口文件 end ******************/
 const vueWebTemp = 'temp';
 const hasPluginInstalled = fs.existsSync('./web/plugin.js');
 const isWin = /^win/.test(process.platform);

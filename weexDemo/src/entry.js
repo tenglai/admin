@@ -3,26 +3,19 @@
  */
 import App from './App.vue'
 import router from './router'
-// import { sync } from 'vuex-router-sync'
-// import * as filters from './filters'
-// import mixins from './mixins'
+import * as filters from './filters'
+import mixins from './mixins'
+
+// 全局注册 工具类过滤器
+Object.keys(filters).forEach(key => {
+	Vue.filter(key, filters[key])
+})
+
+// 全局注册 mixins
+Vue.mixin(mixins)
 
 
-
-// sync the router with the vuex store.
-// this registers `store.state.route`
-// sync(store, router)
-
-// register global utility filters.
-// Object.keys(filters).forEach(key => {
-//     Vue.filter(key, filters[key])
-// })
-
-// register global mixins.
-// Vue.mixin(mixins)
-
-
-// create the app instance.
+// 创建应用程序实例
 // here we inject the router and store to all child components,
 // making them available everywhere as `this.$router` and `this.$store`.
 new Vue(Vue.util.extend({ el: '#root', router }, App));
