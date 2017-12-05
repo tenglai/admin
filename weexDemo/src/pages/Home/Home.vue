@@ -1,6 +1,8 @@
 <!-- 首页 -->
 <template>
-  <div>首页</div>
+  <div>
+    <text>首页</text>
+  </div>
 </template>
  
 <script>

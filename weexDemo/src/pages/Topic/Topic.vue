@@ -1,6 +1,8 @@
 <!-- 专题 -->
 <template>
-  <div>专题</div>
+  <div>
+    <text>专题</text>
+  </div>
 </template>
  
 <script>

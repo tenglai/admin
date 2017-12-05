@@ -1,6 +1,8 @@
-<!-- 我的 -->
+<!-- 个人 -->
 <template>
-  <div>我的</div>
+  <div>
+    <text>个人</text>
+  </div>
 </template>
  
 <script>

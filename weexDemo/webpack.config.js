@@ -58,7 +58,7 @@ const walk = (dir) => {
     });
   }
   // Generate an entry file before writing a webpack configuration
-walk();
+// walk();
 /**
  * Plugins for webpack configuration.
  */

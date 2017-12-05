@@ -1,6 +1,8 @@
 <!-- 购物车 -->
 <template>
-  <div>购物车</div>
+  <div>
+    <text>购物车</text>
+  </div>
 </template>
  
 <script>

@@ -1,11 +1,16 @@
 <!-- 分类 -->
 <template>
-  <div>分类</div>
+  <div>
+    <text>分类</text>
+  </div>
 </template>
  
 <script>
+  import { WxcMinibar } from 'weex-ui';
+
   export default {
     name: 'Class',
+    components: { WxcMinibar },
     data: () => ({
       //
     }),
