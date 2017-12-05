@@ -1,29 +1,55 @@
 <template>
-  <div class="wrapper" @click="update">
-    <image :src="logoUrl" class="logo"></image>
-    <text class="title">Hello {{target}}</text>
-    <text class="desc">Now, let's use vue to build your weex app.</text>
-  </div>
+  <wxc-tab-bar
+    :tab-titles="tabTitles"
+    :tab-styles="tabStyles"
+    title-type="icon"
+    :tab-page-height="tabPageHeight"
+    @wxcTabBarCurrentTabSelected="wxcTabBarCurrentTabSelected">
+    <!-- 第一个页面内容-->
+    <div class="item-container" :style="contentStyle"><text>首页</text></div>
+ 
+    <!-- 第二个页面内容-->
+    <div class="item-container" :style="contentStyle"><text>特别推荐</text></div>
+ 
+    <!-- 第三个页面内容-->
+    <div class="item-container" :style="contentStyle"><text>消息中心</text></div>
+ 
+    <!-- 第四个页面内容-->
+    <div class="item-container" :style="contentStyle"><text>我的主页</text></div>
+  </wxc-tab-bar>
 </template>
-
-<style>
-  .wrapper { align-items: center; margin-top: 120px; }
-  .title { padding-top:40px; padding-bottom: 40px; font-size: 48px; }
-  .logo { width: 360px; height: 156px; }
-  .desc { padding-top: 20px; color:#888; font-size: 24px;}
-</style>
-
+ 
 <script>
+  import { WxcTabBar, Utils } from 'weex-ui';
+ 
+  // tab配置文件
+  import Config from './config'
+ 
   export default {
-    data: {
-      logoUrl: 'http://img1.vued.vanthink.cn/vued08aa73a9ab65dcbd360ec54659ada97c.png',
-      target: 'World'
+    components: { WxcTabBar },
+    data: () => ({
+      tabTitles: Config.tabTitles,
+      tabStyles: Config.tabStyles
+    }),
+    created () {
+      this.tabPageHeight = Utils.env.getPageHeight();
+      const { tabPageHeight, tabStyles } = this;
+      this.contentStyle = { height: (tabPageHeight - tabStyles.height) + 'px' };
     },
     methods: {
-      update: function (e) {
-        this.target = 'Weex'
-        console.log('target:', this.target)
+      wxcTabBarCurrentTabSelected (e) {
+        const index = e.page;
+        // console.log(index);
       }
     }
-  }
+  };
 </script>
+ 
+<style scoped>
+  .item-container {
+    width: 750px;
+    background-color: #f2f3f4;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
