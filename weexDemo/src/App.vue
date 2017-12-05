@@ -1,55 +1,55 @@
+<!-- 主页面 -->
 <template>
-  <wxc-tab-bar
-    :tab-titles="tabTitles"
-    :tab-styles="tabStyles"
-    title-type="icon"
-    :tab-page-height="tabPageHeight"
-    @wxcTabBarCurrentTabSelected="wxcTabBarCurrentTabSelected">
-    <!-- 第一个页面内容-->
-    <div class="item-container" :style="contentStyle"><text>首页</text></div>
- 
-    <!-- 第二个页面内容-->
-    <div class="item-container" :style="contentStyle"><text>特别推荐</text></div>
- 
-    <!-- 第三个页面内容-->
-    <div class="item-container" :style="contentStyle"><text>消息中心</text></div>
- 
-    <!-- 第四个页面内容-->
-    <div class="item-container" :style="contentStyle"><text>我的主页</text></div>
-  </wxc-tab-bar>
+  <div class="app-wrapper">
+    <router-view class="r-box"></router-view>
+    <tab-bar @tabTo="onTabTo"></tab-bar>
+  </div>
 </template>
- 
-<script>
-  import { WxcTabBar, Utils } from 'weex-ui';
- 
-  // tab配置文件
-  import Config from './config'
- 
-  export default {
-    components: { WxcTabBar },
-    data: () => ({
-      tabTitles: Config.tabTitles,
-      tabStyles: Config.tabStyles
-    }),
-    created () {
-      this.tabPageHeight = Utils.env.getPageHeight();
-      const { tabPageHeight, tabStyles } = this;
-      this.contentStyle = { height: (tabPageHeight - tabStyles.height) + 'px' };
-    },
-    methods: {
-      wxcTabBarCurrentTabSelected (e) {
-        const index = e.page;
-        console.log(index);
-      }
-    }
-  };
-</script>
- 
-<style scoped>
-  .item-container {
-    width: 750px;
-    background-color: #f2f3f4;
-    align-items: center;
-    justify-content: center;
+
+<style>
+  body{
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color:#333;
   }
 </style>
+
+<style scoped>
+  .app-wrapper{
+    background-color: #f4f4f4;
+  }
+  .r-box{
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+</style>
+
+<script>
+  var modal = weex.requireModule('modal');
+  import util from './assets/util';
+  import tabBar from './assets/components/tabBar.vue';
+
+  export default {
+    data () {
+      return {
+        //
+      }
+    },
+    components: {
+      'tab-bar': tabBar
+    },
+    created () {
+      util.initIconFont();
+    },
+    methods: {
+      onTabTo(_result){
+        let _key = _result.data.key || '';
+        this.$router && this.$router.push('/'+_key)
+      }
+    }
+  }
+</script>
