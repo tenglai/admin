@@ -44,7 +44,7 @@ git checkout A(当前分支)
 
 git merge B(要合并的分支)
 
-即 B 上的代码 同步到 A 上
+即 B 上的代码 同步到 A 上 
 
 10.版本回退
 
