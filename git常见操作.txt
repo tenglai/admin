@@ -59,3 +59,7 @@ git merge master(要合并的分支)
 git rm raindow(文件夹名称) -r -f
 
 即 删除raindow文件夹及其下所有的文件
+
+12.创建远程分支
+
+git push origin weex(分支名称)
