@@ -40,9 +40,11 @@ git diff branch1 branch2                   // 显示出所有有差异的文件的详细差异
 
 9.合并分支和master分支
 
-git checkout ABC(当前分支)
+git checkout A(当前分支)
 
-git merge master(要合并的分支)
+git merge B(要合并的分支)
+
+即 B 上的代码 同步到 A 上
 
 10.版本回退
 
