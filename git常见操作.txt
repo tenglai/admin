@@ -65,3 +65,5 @@ git rm raindow(文件夹名称) -r -f
 12.创建远程分支
 
 git push origin weex(分支名称)
+
+13.合并分支
