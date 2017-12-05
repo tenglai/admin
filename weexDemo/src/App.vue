@@ -39,7 +39,7 @@
     methods: {
       wxcTabBarCurrentTabSelected (e) {
         const index = e.page;
-        // console.log(index);
+        console.log(index);
       }
     }
   };
