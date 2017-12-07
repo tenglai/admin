@@ -3,16 +3,16 @@
  */
 import App from './App.vue'
 import router from './router'
-// import * as filters from './filters'
-// import mixins from './mixins'
+import * as filters from './filters'
+import mixins from './mixins'
 
-// // 全局注册 工具类过滤器
-// Object.keys(filters).forEach(key => {
-// 	Vue.filter(key, filters[key])
-// })
+// 全局注册 工具类过滤器
+Object.keys(filters).forEach(key => {
+	Vue.filter(key, filters[key])
+})
 
-// // 全局注册 mixins
-// Vue.mixin(mixins)
+// 全局注册 mixins
+Vue.mixin(mixins)
 
 
 // 创建应用程序实例

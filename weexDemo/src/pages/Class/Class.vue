@@ -6,11 +6,8 @@
 </template>
  
 <script>
-  import { WxcMinibar } from 'weex-ui';
-
   export default {
     name: 'Class',
-    components: { WxcMinibar },
     data: () => ({
       //
     }),
