@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\admin\\weexDemo\\platforms\\android\\app\\build\\intermediates\\res\\merged\\release\\xml\\app_config.xml",
+        "source": "C:\\Users\\Administrator\\Desktop\\admin\\weexDemo\\platforms\\android\\app\\src\\main\\res\\xml\\app_config.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\admin\\weexDemo\\platforms\\android\\app\\build\\intermediates\\res\\merged\\release\\xml\\config.xml",
+        "source": "C:\\Users\\Administrator\\Desktop\\admin\\weexDemo\\platforms\\android\\app\\build\\intermediates\\exploded-aar\\android\\weexplugin\\unspecified\\res\\xml\\config.xml"
+    }
+]
