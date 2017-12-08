@@ -19,11 +19,40 @@ Vue.use(Router)
 export default new Router({
     // mode: 'abstract',
     routes: [
-        { path: '/', redirect: '/home' },
-        { path: '/home', component: Home },
-        { path: '/topic', component: Topic },
-        { path: '/class', component: Class },
-        { path: '/shop', component: Shop },
-        { path: '/my', component: My }
+    	// 默认页面(重定向)
+        {
+        	path: '/',
+        	redirect: '/home'
+        },
+        // 首页
+        {
+        	path: '/home',
+        	name: 'Home',
+        	component: Home
+        },
+        // 专题
+        {
+        	path: '/topic',
+        	name: 'Topic',
+        	component: Topic
+        },
+        // 分类
+        {
+        	path: '/class',
+        	name: 'Class',
+        	component: Class
+        },
+        // 购物车
+        {
+        	path: '/shop',
+        	name: 'Shop',
+        	component: Shop
+        },
+        // 个人
+        {
+        	path: '/my',
+        	name: 'My',
+        	component: My
+        }
     ]
 })
