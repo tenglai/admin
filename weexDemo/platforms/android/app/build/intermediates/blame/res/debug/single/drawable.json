@@ -24,12 +24,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\admin\\weexDemo\\platforms\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_btn_radio_material.xml"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\admin\\weexDemo\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
-        "source": "C:\\Users\\Administrator\\Desktop\\admin\\weexDemo\\platforms\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_switch_thumb_material.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\admin\\weexDemo\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\error.png",
         "source": "C:\\Users\\Administrator\\Desktop\\admin\\weexDemo\\platforms\\android\\app\\build\\intermediates\\exploded-aar\\com.taobao.android\\weex_sdk\\0.16.0\\res\\drawable\\error.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\admin\\weexDemo\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
+        "source": "C:\\Users\\Administrator\\Desktop\\admin\\weexDemo\\platforms\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_switch_thumb_material.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\admin\\weexDemo\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_light.xml",
