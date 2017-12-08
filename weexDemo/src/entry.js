@@ -14,7 +14,6 @@ Object.keys(filters).forEach(key => {
 // 全局注册 mixins
 Vue.mixin(mixins)
 
-
 // 创建应用程序实例
 // here we inject the router and store to all child components,
 // making them available everywhere as `this.$router` and `this.$store`.
