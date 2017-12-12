@@ -18,6 +18,9 @@
     "dependencies": {
         "fs-extra": "^4.0.1",
         "vue": "^2.4.3",
+        "vue-router": "^3.0.1",
+        "vuex": "^3.0.1",
+        "vuex-router-sync": "^5.0.0",
         "weex-html5": "^0.4.1",
         "weex-vue-render": "^0.12.21"
     },
