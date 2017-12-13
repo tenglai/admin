@@ -1,1 +1,0 @@
-// https://github.com/Hanks10100/weex-vue-examples
