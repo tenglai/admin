@@ -24,43 +24,36 @@ export default new Router({
     // 默认页面
     {
       path: '/',
-      name: 'Login',
-      component: Login
+      component: Home
     },
     // 登录页
     {
       path: '/login',
-      name: 'Login',
       component: Login
     },
     // 首页
     {
       path: '/home',
-      name: 'Home',
       component: Home
     },
     // 专题
     {
       path: '/topic',
-      name: 'Topic',
       component: Topic
     },
     // 分类
     {
       path: '/class',
-      name: 'Class',
       component: Class
     },
     // 购物车
     {
       path: '/shop',
-      name: 'Shop',
       component: Shop
     },
     // 我的
     {
       path: '/my',
-      name: 'My',
       component: My
     },
     {

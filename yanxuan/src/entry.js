@@ -29,5 +29,6 @@ new Vue(Vue.util.extend({
 	router,
 	store
 }, App));
- 
-router.push('/');
+
+// 首次跳转页面
+router.push('/login');
