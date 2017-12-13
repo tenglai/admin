@@ -4,7 +4,7 @@
 import App from './App.vue'
 import router from './router'
 // 引入 vuex入口文件
-import store from './vuex/index'
+import store from './store/index'
 import { sync } from 'vuex-router-sync'
 // 自定义过滤器
 import * as filters from './filters'
@@ -23,19 +23,11 @@ Object.keys(filters).forEach(key => {
 // 全局注册 mixins.
 Vue.mixin(mixins)
  
-// // 创建应用程序实例
-// new Vue(Vue.util.extend({
-// 	el: '#root',
-// 	router,
-// 	store
-// }, App));
-
-/* eslint-disable no-new */
-new Vue({
-  el: '#root',
-  router,
-  store,
-  render: h => h(App)
-})
+// 创建应用程序实例
+new Vue(Vue.util.extend({
+	el: '#root',
+	router,
+	store
+}, App));
  
 router.push('/');

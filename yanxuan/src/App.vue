@@ -2,7 +2,7 @@
 <template>
   <div class="app-wrapper">
     <router-view class="r-box"></router-view>
-    <tab-bar @tabTo="onTabTo"></tab-bar>
+    <tab-bar @tabTo="onTabTo" v-show="tabbarShow"></tab-bar>
   </div>
 </template>
  
@@ -23,23 +23,22 @@
       'tab-bar': tabBar
     },
     // 计算属性
-    // computed:mapGetters([
-    //   // 从 getters 中获取值
-    //   'tabbarShow'
-    // ]),
+    computed:mapGetters([
+      // 从 getters 中获取值
+      'tabbarShow'
+    ]),
     // 监听,当路由发生变化的时候执行
     watch:{
       $route(to,from){
         console.log(to.path);
         if(to.path == '/home' || to.path == '/topic' || to.path == '/class' || to.path == '/shop' || to.path == '/my'){
           /**
-           * $store来自Store对象
+           * this.$options.store来自Store对象
            * dispatch 向 actions 发起请求
            */
-          console.log(this.$store);
-          // this.$store.dispatch('showTabBar');
+          this.$store.dispatch('showTabBar');
         }else{
-          // this.$store.dispatch('hideTabBar');
+          this.$store.dispatch('hideTabBar');
         }
       }
     },

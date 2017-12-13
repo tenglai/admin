@@ -24,8 +24,8 @@ export default new Router({
     // 默认页面
     {
       path: '/',
-      name: 'Home',
-      component: Home
+      name: 'Login',
+      component: Login
     },
     // 登录页
     {
