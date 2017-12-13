@@ -13,7 +13,7 @@
       <div class="input-wrapper">
         <div class="input-login" @click="login"> 
           <text class="input-login-text">登录</text>  
-        </div>  
+        </div>
       </div>  
       <div class="input-wrapper">  
         <text class="input-forget" @click="findPassword">找回密码</text>  
