@@ -17,6 +17,8 @@
     "license": "MIT",
     "dependencies": {
         "fs-extra": "^4.0.1",
+        "less": "^2.7.3",
+        "less-loader": "^4.0.5",
         "vue": "^2.4.3",
         "vue-router": "^3.0.1",
         "vuex": "^3.0.1",

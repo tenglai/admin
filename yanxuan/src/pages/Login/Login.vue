@@ -3,11 +3,11 @@
   <div class="wrapper">  
     <div class="login">  
       <div class="input-wrapper">  
-        <input onchange="onchangeUserNumber" class="input" type="text" placeholder="手机号" autofocus="true" value=""/> 
+        <input @input="onchangeUserNumber" class="input" type="text" placeholder="手机号" autofocus="true" value=""/> 
         <image class="input-img" src="http://172.16.1.208:8081/src/assets/img/user.png"></image>  
       </div>  
       <div class="input-wrapper">  
-        <input onchange="onchangeUserPassword" class="input" type="password" placeholder="密码" value=""/>  
+        <input @input="onchangeUserPassword" class="input" type="password" placeholder="密码" value=""/>  
         <image class="input-img" src="http://172.16.1.208:8081/src/assets/img/password.png"></image>
       </div>  
       <div class="input-wrapper">
@@ -23,8 +23,11 @@
   </div>  
 </template>  
   
-<script>  
-  module.exports = {  
+<script>
+  // 引入弹窗
+  var modal = weex.requireModule('modal');
+
+  export default {  
     data(){  
       return {
         userNumber:'',  
@@ -33,91 +36,113 @@
     },  
     methods:{  
       onchangeUserNumber(event) {
-        this.userNumber = event.value;  
+        this.userNumber = event.value;
       },  
       onchangeUserPassword(event) {  
         this.userPassword = event.value;  
       },  
-      /*找回密码 #48c9bf*/  
+      /*找回密码*/  
       findPassword() {
-        // this.$vm('toast').$emit('toast','Hello,找回密码暂时未开发，后续我们会进行完善。');  
+        modal.toast({
+          message: 'Hello,找回密码暂时未开发，后续我们会进行完善。',
+          duration: 2
+        });
       },  
       /*注册*/  
       register() {
-        // this.$vm('toast').$emit('toast','Hello,注册暂时未开发，后续我们会进行完善。');  
+        modal.toast({
+          message: 'Hello,注册暂时未开发，后续我们会进行完善。',
+          duration: 2
+        }); 
       },  
       /*处理登录*/  
       login() {
-        console.log(1);
-        if(this.userNumber.length < 1){  
-          // this.$vm('toast').$emit('toast','请输入手机号');  
+        if(this.userNumber.length < 1){
+          modal.toast({
+            message: '请输入手机号',
+            duration: 2
+          }); 
           return;  
-        }else if(this.userPassword.length < 1){  
-          // this.$vm('toast').$emit('toast','请输入密码');  
+        }else if(this.userPassword.length < 1){
+          modal.toast({
+            message: '请输入密码',
+            duration: 2
+          });
           return;  
-        }  
-        // this.$vm('toast').$emit('toast',"登录成功");  
+        }
+        modal.toast({
+          message: '登录成功',
+          duration: 2
+        });
+        // 跳转首页
+        this.$router.push({path:'/home'});
       }
     }  
   }  
 </script>  
   
-<style>  
+<style lang="less" scoped>
+  /*整体页面*/ 
   .wrapper {  
     position: absolute;  
     top: 0;  
     right: 0;  
     bottom: 0;  
-    left: 0;  
-  }  
-  .login{
-    margin-top: 130px;
-  }  
-  .input-wrapper{  
-    width: 100%;  
-    margin-bottom: 30px;  
-  }  
-  .input {  
-    font-size: 16px;  
-    height: 50px;  
-    width: 80%;
-    margin: 0px auto;
-    border-width:1px;  
-    border-color: #48c9bf;  
-    border-radius:5px;  
-    outline: none;
-    text-indent: 2em;
-  }  
-  .input-img{  
-    position: absolute;  
-    top:10px;  
-    left: 35px;  
-    width: 30px;  
-    height: 30px;  
-  }  
-  .input-login{  
-    height: 50px;  
-    width: 80%;  
-    background-color: #48c9bf;  
-    border-radius: 10px;  
-    margin: 30px auto 0px; 
-  }  
-  .input-login-text{  
-    height: 50px;  
-    width: 100%;  
-    text-align: center;  
-    line-height: 50px;  
-    color: white;  
-    font-size: 20px;  
-  }  
-  .input-forget{  
-    position: absolute;  
-    left: 50px;  
-    font-size: 16px;  
-  }  
-  .input-register{  
-    position: absolute;  
-    right: 50px;  
-    font-size: 16px;  
+    left: 0;
+    /*输入框 及 按钮*/
+    .login{
+      width: 80%;
+      height: 300px;
+      overflow: hidden;
+      /*垂直水平居中*/
+      position:absolute;
+      left:0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      .input-wrapper{  
+        /*输入框*/
+        .input {  
+          height: 44px;
+          border: 1px solid #48c9bf;
+          border-radius: 5px;
+          margin-bottom: 30px;
+          text-indent: 2em;
+        }
+        /*图标*/
+        .input-img{
+          position: absolute;
+          top: 10px;
+          left: 10px; 
+          width: 20px;
+          height: 20px;
+        }
+        /*登录按钮*/
+        .input-login{  
+          height: 44px;
+          background-color: #48c9bf;
+          border-radius: 5px;
+          margin-bottom: 20px;
+          .input-login-text{  
+            color: #fff;
+            height: 44px;
+            line-height: 44px;
+            text-align: center;
+            font-size: 20px;
+          }
+        }
+        /*找回密码*/
+        .input-forget{  
+          position: absolute;
+          left: 0px;
+        }
+        /*立即注册*/  
+        .input-register{  
+          position: absolute;
+          right: 0px;
+        }
+      }
+    }
   }  
 </style>
