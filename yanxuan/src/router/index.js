@@ -24,7 +24,8 @@ export default new Router({
     // 默认页面
     {
       path: '/',
-      redirect: '/login'
+      name: 'Home',
+      component: Home
     },
     // 登录页
     {
@@ -61,6 +62,14 @@ export default new Router({
       path: '/my',
       name: 'My',
       component: My
-    }
+    },
+    {
+      path: '/home',
+      redirect: '/'
+    },
+    {
+      path: '*',
+      redirect: '/'
+    },
   ]
 })
