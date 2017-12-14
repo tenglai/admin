@@ -36,15 +36,15 @@
       wxcTabBarCurrentTabSelected (e) {
         const index = e.page;
         if(index == 0){
-          this.jump('/home');
+          this.jumpTo('/home');
         }else if(index == 1){
-          this.jump('/recommend');
+          this.jumpTo('/recommend');
         }else if(index == 2){
-          this.jump('/message');
+          this.jumpTo('/message');
         }else if(index == 3){
-          this.jump('/mine');
+          this.jumpTo('/mine');
         }else{
-          this.jump('/home');
+          this.jumpTo('/home');
         }
       }
     }
