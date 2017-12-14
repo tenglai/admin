@@ -35,7 +35,6 @@
       // 当前选中的 tab
       wxcTabBarCurrentTabSelected (e) {
         const index = e.page;
-        console.log(e);
         if(index == 0){
           this.jump('/home');
         }else if(index == 1){

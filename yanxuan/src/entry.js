@@ -22,6 +22,9 @@ Object.keys(filters).forEach(key => {
 
 // 全局注册 mixins.
 Vue.mixin(mixins)
+
+// 清除css默认样式
+// import './assets/css/reset.less'
  
 // 创建应用程序实例
 new Vue(Vue.util.extend({
@@ -31,4 +34,4 @@ new Vue(Vue.util.extend({
 }, App));
 
 // 首次跳转页面
-router.push('/login');
+router.push('/');
