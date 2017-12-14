@@ -25,6 +25,7 @@
         <slot></slot>
     </scroller>
 </template>
+
 <script>
     import tabbarPage from '../mixins/TabbarPage';
     import {timer} from "../utils/ExportWeexModel";
@@ -126,6 +127,7 @@
         }
     }
 </script>
+
 <style scoped>
 
     .flex_v_center {

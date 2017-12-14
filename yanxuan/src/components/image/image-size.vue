@@ -2,6 +2,7 @@
 <template>
     <image v-if="show" @click="click" :src="src" :style="style"></image>
 </template>
+
 <script>
     import {imageLoader} from "../../utils/ExportWeexModel";
 

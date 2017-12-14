@@ -14,6 +14,7 @@
         </div>
     </div>
 </template>
+
 <script>
     import fadeIn from '../mixins/FadeIn';
     export default{
@@ -66,6 +67,7 @@
         }
     }
 </script>
+
 <style scoped>
     .app {
         flex-direction: column;

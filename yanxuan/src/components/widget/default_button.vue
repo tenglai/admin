@@ -6,6 +6,7 @@
         <text class="button_default" :style="textStyle">{{text}}</text>
     </div>
 </template>
+
 <script>
     import buttonLock from "../../mixins/ButtonLock";
 
@@ -54,6 +55,7 @@
         }
     }
 </script>
+
 <style lang="sass" scoped>
     @import "../../assets/widget/button"
 </style>

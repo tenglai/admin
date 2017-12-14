@@ -21,11 +21,12 @@
         </div>
     </div>
 </template>
+
 <script>
-    import Marquee from "../../../src/components/home/marquee.vue";
-    import weexUtils from "wxp_weex_componets/src/utils/WeexUtils";
-    import callNative from "wxp_weex_componets/src/mixins/CallNative";
-    import mixins from "wxp_weex_componets/src/mixins/index";
+    import Marquee from "./marquee.vue";
+    import weexUtils from "../../utils/WeexUtils";
+    import callNative from "../../mixins/CallNative";
+    import mixins from "../../mixins/index";
     import memberSession from "../../mixins/MemberSession";
 
     export  default{

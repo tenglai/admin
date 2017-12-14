@@ -5,6 +5,7 @@
         <text v-if="resultSize===0 " :style="noDataStyle">{{noDataTip}}</text>
     </cell>
 </template>
+
 <script>
     export default {
         props:{
@@ -32,6 +33,7 @@
         }
     }
 </script>
+
 <style scoped>
     .no_data{
         justify-content: center;

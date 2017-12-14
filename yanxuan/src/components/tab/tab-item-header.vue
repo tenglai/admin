@@ -9,6 +9,7 @@
         </div>
     </div>
 </template>
+
 <script>
 
    // import {broadcast} from "wxp_weex_componets/src/utils/ExportWeexModel";
@@ -92,6 +93,7 @@
         }
     }
 </script>
+
 <style scoped>
     .flex_row {
         flex-direction: row;

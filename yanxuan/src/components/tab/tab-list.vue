@@ -40,6 +40,7 @@
         </slider>
     </div>
 </template>
+
 <script>
     import TabItemHeader from "./tab-item-header.vue";
 
@@ -138,6 +139,7 @@
 
     }
 </script>
+
 <style scoped>
     .flex_cell {
         flex: 1;

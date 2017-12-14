@@ -14,6 +14,7 @@
         </div>
     </div>
 </template>
+
 <script>
     import weexUtils from '../../utils/WeexUtils';
     export default {
@@ -39,11 +40,13 @@
         }
     }
 </script>
+
 <style lang="sass" scoped>
     @import "../../assets/base/flex.scss";
     @import "../../assets/base/text.scss";
     @import "../../assets/base/margin_common.scss";
 </style>
+
 <style scoped>
     .action-item{
         background-color: #ffffff;

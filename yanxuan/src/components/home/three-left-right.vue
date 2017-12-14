@@ -20,10 +20,11 @@
         </div>
     </div>
 </template>
+
 <script>
-    import {imageLoader} from "wxp_weex_componets/src/utils/ExportWeexModel";
-    import callNative from "wxp_weex_componets/src/mixins/CallNative";
-    import mixins from "wxp_weex_componets/src/mixins/index";
+    import {imageLoader} from "../../utils/ExportWeexModel";
+    import callNative from "../../mixins/CallNative";
+    import mixins from "../../mixins/index";
     import memberSession from "../../mixins/MemberSession";
 
     export default{
@@ -160,6 +161,7 @@
         }
     }
 </script>
+
 <style scoped>
     .flex_row {
         flex-direction: row

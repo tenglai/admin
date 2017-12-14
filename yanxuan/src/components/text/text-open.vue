@@ -11,6 +11,7 @@
         <!--</div>-->
     </div>
 </template>
+
 <script>
     export default {
         props: {
@@ -80,6 +81,7 @@
         }
     }
 </script>
+
 <style scoped>
     .text_content{
         flex: 1;

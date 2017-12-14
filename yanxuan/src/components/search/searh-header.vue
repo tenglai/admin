@@ -24,9 +24,10 @@
         </div>
     </div>
 </template>
+
 <script>
 
-    import weexUtils from "wxp_weex_componets/src/utils/WeexUtils";
+    import weexUtils from "../../utils/WeexUtils";
 
     export default{
         props: {
@@ -119,6 +120,7 @@
         }
     }
 </script>
+
 <style scoped>
     .flex_row {
         flex-direction: row;

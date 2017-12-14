@@ -5,6 +5,7 @@
         <text class="text-item margin_top_20">{{text}}</text>
     </div>
 </template>
+
 <script>
     export default {
         props:{

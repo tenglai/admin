@@ -8,8 +8,9 @@
         </div>
     </div>
 </template>
+
 <script>
-    import {animation} from "wxp_weex_componets/src/utils/ExportWeexModel";
+    import {animation} from "../../utils/ExportWeexModel";
 
     export default {
         props: {

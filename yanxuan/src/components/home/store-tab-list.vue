@@ -53,15 +53,15 @@
         </div>
     </div>
 </template>
-<script>
 
-    import {imageLoader} from "wxp_weex_componets/src/utils/ExportWeexModel";
-    import callNative from "wxp_weex_componets/src/mixins/CallNative";
-    import mixins from "wxp_weex_componets/src/mixins/index";
+<script>
+    import {imageLoader} from "../../utils/ExportWeexModel";
+    import callNative from "../../mixins/CallNative";
+    import mixins from "../../mixins/index";
     import memberSession from "../../mixins/MemberSession";
-    import ApiReqFactory from "wxp_weex_componets/src/utils/ApiReqFactory";
-    import weexUtils from "wxp_weex_componets/src/utils/WeexUtils";
-    import formatWeexUtils from "wxp_weex_componets/src/utils/FormatWeexUtils";
+    import ApiReqFactory from "../../utils/ApiReqFactory";
+    import weexUtils from "../../utils/WeexUtils";
+    import formatWeexUtils from "../../utils/FormatWeexUtils";
 
     import storeService from "jn_api_sdk/src/services/store/StoreService";
 
@@ -179,6 +179,7 @@
         }
     }
 </script>
+
 <style scoped>
     .flex_row {
         flex-direction: row;
@@ -320,6 +321,4 @@
         text-overflow: ellipsis;
         lines: 1
     }
-
-
 </style>

@@ -21,6 +21,7 @@
         <!--@click="changeInputType"></image>-->
     </div>
 </template>
+
 <script>
     import weexUtils from "../../utils/WeexUtils";
 
@@ -127,6 +128,7 @@
         }
     }
 </script>
+
 <style scoped>
     .flex_row {
         flex-direction: row;

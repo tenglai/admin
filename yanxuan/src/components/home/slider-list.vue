@@ -18,13 +18,13 @@
                        style=""
             ></indicator>
         </slider>
-
     </div>
 </template>
+
 <script>
-    import {imageLoader} from "wxp_weex_componets/src/utils/ExportWeexModel";
-    import callNative from "wxp_weex_componets/src/mixins/CallNative";
-    import mixins from "wxp_weex_componets/src/mixins/index";
+    import {imageLoader} from "../../utils/ExportWeexModel";
+    import callNative from "../../mixins/CallNative";
+    import mixins from "../../mixins/index";
     import memberSession from "../../mixins/MemberSession";
 
     export default{
@@ -75,9 +75,9 @@
                     console.log("获取图片高度失败!-> "+msg);
                 });
         }
-
     }
 </script>
+
 <style scoped>
     .slider_container {
         width: 750px;

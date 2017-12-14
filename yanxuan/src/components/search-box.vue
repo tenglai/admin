@@ -11,6 +11,7 @@
         <image class="clear-icon" v-if="clearShow" :src="clearIconURL" @click="clearInputText"></image>
     </div>
 </template>
+
 <script>
     import weexUtils from "../utils/WeexUtils";
 
@@ -87,6 +88,7 @@
         }
     }
 </script>
+
 <style scoped>
     .search-content {
         flex: 1;

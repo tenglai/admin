@@ -28,6 +28,7 @@
         </div>
     </div>
 </template>
+
 <script>
     import AppHeader from "../structure/app-header.vue";
 

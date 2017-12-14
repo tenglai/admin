@@ -2,6 +2,7 @@
 <template>
     <image v-if="show" :src="backTopIcon" :style="backStyle" @click="backTop"></image>
 </template>
+
 <script>
     import weexUtils from "../utils/WeexUtils";
     import {dom} from "../utils/ExportWeexModel"
@@ -43,4 +44,7 @@
         }
     }
 </script>
-<style scoped></style>
+
+<style scoped>
+    /**/
+</style>

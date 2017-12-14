@@ -4,6 +4,7 @@
         <slot></slot>
     </div>
 </template>
+
 <script>
     import fadeIn from '../mixins/FadeIn';
     export default {

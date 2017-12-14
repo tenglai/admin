@@ -39,6 +39,7 @@
         </slider>
     </div>
 </template>
+
 <script>
     import TabItemScrollHeader from "./tab-item-scroll-header.vue";
 
@@ -138,6 +139,7 @@
 
     }
 </script>
+
 <style scoped>
     .flex_cell {
         flex: 1;

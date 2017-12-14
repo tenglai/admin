@@ -6,6 +6,7 @@
         <CircleImage v-if="android" @click="click" :src="src" :radius="radius" :style="style"></CircleImage>
     </div>
 </template>
+
 <script>
     export default {
         props: {

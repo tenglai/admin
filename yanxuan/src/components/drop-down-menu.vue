@@ -18,6 +18,7 @@
         </div>
     </div>
 </template>
+
 <script>
     import weexUtils from "../utils/WeexUtils";
     export default{

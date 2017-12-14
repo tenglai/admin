@@ -19,6 +19,7 @@
                @click="addButton"></image>
     </div>
 </template>
+
 <script>
     import weexUtils from "../../utils/WeexUtils";
     import {timer} from "../../utils/ExportWeexModel";
@@ -308,6 +309,7 @@
         }
     }
 </script>
+
 <style scoped>
     .stepping {
         flex-direction: row;

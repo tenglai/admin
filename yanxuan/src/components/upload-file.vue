@@ -1,3 +1,4 @@
+<!-- 上传图片组件 -->
 <template>
     <image @click="uploadImage" :src="uploadFileTipImage" :style="uploadNativeStyle"></image>
 </template>

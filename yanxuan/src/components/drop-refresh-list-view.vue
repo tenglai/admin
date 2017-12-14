@@ -22,6 +22,7 @@
         </list>
     </div>
 </template>
+
 <script>
     import {timer} from "../utils/ExportWeexModel";
     import weexUtils from "../utils/WeexUtils";
@@ -128,6 +129,7 @@
         }
     }
 </script>
+
 <style scoped>
 
     .flex_v_center {

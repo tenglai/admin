@@ -14,6 +14,7 @@
         </div>
     </scroller>
 </template>
+
 <script>
     import {dom} from "../../utils/ExportWeexModel";
 
@@ -101,6 +102,7 @@
         }
     }
 </script>
+
 <style scoped>
     .flex_row {
         flex-direction: row;
