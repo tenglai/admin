@@ -1,13 +1,13 @@
-<!-- 我的 -->
+<!-- 特别推荐 -->
 <template>
   <div>
-    <text>我的</text>
+    <text>特别推荐</text>
   </div>
 </template>
   
 <script>
   export default {
-    name: 'My',
+    name: 'Recommend',
     data: () => ({
       //
     }),

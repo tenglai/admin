@@ -6,14 +6,12 @@ import Router from 'vue-router'
 import Login from '../pages/Login/Login.vue'
 // 首页
 import Home from '../pages/Home/Home.vue'
-// 专题
-import Topic from '../pages/Topic/Topic.vue'
-// 分类
-import Class from '../pages/Class/Class.vue'
-// 购物车
-import Shop from '../pages/Shop/Shop.vue'
-// 个人
-import My from '../pages/My/My.vue'
+// 特别推荐
+import Recommend from '../pages/Recommend/Recommend.vue'
+// 消息中心
+import Message from '../pages/Message/Message.vue'
+// 我的主页
+import Mine from '../pages/Mine/Mine.vue'
  
 Vue.use(Router)
  
@@ -36,25 +34,20 @@ export default new Router({
       path: '/home',
       component: Home
     },
-    // 专题
+    // 特别推荐
     {
-      path: '/topic',
-      component: Topic
+      path: '/recommend',
+      component: Recommend
     },
-    // 分类
+    // 消息中心
     {
-      path: '/class',
-      component: Class
+      path: '/message',
+      component: Message
     },
-    // 购物车
+    // 我的主页
     {
-      path: '/shop',
-      component: Shop
-    },
-    // 我的
-    {
-      path: '/my',
-      component: My
+      path: '/mine',
+      component: Mine
     },
     {
       path: '/home',

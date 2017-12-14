@@ -1,13 +1,13 @@
-<!-- 专题 -->
+<!-- 信息中心 -->
 <template>
   <div>
-    <text>专题</text>
+    <text>信息中心</text>
   </div>
 </template>
   
 <script>
   export default {
-    name: 'Topic',
+    name: 'Message',
     data: () => ({
       //
     }),

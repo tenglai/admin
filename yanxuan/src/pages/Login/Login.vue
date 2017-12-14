@@ -4,11 +4,11 @@
     <div class="login">  
       <div class="input-wrapper">  
         <input @input="onchangeUserNumber" class="input" type="text" placeholder="手机号" autofocus="true" value=""/> 
-        <image class="input-img" src="http://172.16.1.208:8081/src/assets/img/user.png"></image>  
+        <image class="input-img" src="http://172.16.0.67:8081/src/assets/img/user.png"></image>  
       </div>  
       <div class="input-wrapper">  
         <input @input="onchangeUserPassword" class="input" type="password" placeholder="密码" value=""/>  
-        <image class="input-img" src="http://172.16.1.208:8081/src/assets/img/password.png"></image>
+        <image class="input-img" src="http://172.16.0.67:8081/src/assets/img/password.png"></image>
       </div>  
       <div class="input-wrapper">
         <div class="input-login" @click="login"> 
