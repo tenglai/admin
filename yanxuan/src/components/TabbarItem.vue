@@ -1,3 +1,4 @@
+<!-- 底部选项卡 子组件 -->
 <template>
   <a class="m-tabbar-item" :class="{'is-active':isActive}" @click="goToRouter">
     <span class="m-tabbar-item-icon" v-show="!isActive"><slot name="icon-normal"></slot></span>
@@ -5,6 +6,7 @@
     <span class="m-tabbar-item-text"><slot></slot></span>
   </a>
 </template>
+
 <script>
   export default{
     props: {
@@ -35,6 +37,7 @@
     }
   }
 </script>
+
 <style lang="less">
   .m-tabbar-item{
     flex: 1;
