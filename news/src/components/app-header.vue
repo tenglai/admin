@@ -1,3 +1,4 @@
+<!-- 页面头部导航条 -->
 <template>
   <div class="header">
     <div class="logo" @click="jump('/')">

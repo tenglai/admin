@@ -1,3 +1,4 @@
+<!-- 外部链接 -->
 <template>
   <div @click="open">
     <slot></slot>

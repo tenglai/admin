@@ -1,3 +1,6 @@
+/**
+ * 封装的网络请求接口
+ */
 const stream = weex.requireModule('stream')
 const baseURL = 'https://hacker-news.firebaseio.com/v0'
 

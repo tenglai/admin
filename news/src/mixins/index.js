@@ -1,3 +1,6 @@
+/**
+ * 全局混合
+ */
 export default {
   methods: {
     jump (to) {

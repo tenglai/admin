@@ -1,3 +1,4 @@
+<!-- 新闻列表页 -->
 <template>
   <div class="stories-view" append="tree">
     <app-header></app-header>

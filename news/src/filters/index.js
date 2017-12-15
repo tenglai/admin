@@ -1,3 +1,6 @@
+/**
+ * 通用过滤器
+ */
 export function host (url) {
   if (!url) return ''
   const host = url.replace(/^https?:\/\//, '').replace(/\/.*$/, '')

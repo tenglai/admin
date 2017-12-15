@@ -1,3 +1,6 @@
+/**
+ * 路由配置
+ */
 // import Vue from 'vue'
 import Router from 'vue-router'
 import StoriesView from './views/StoriesView.vue'

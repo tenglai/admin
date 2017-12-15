@@ -1,3 +1,4 @@
+<!-- 评论框 -->
 <template>
   <div :class="className" v-if="comment">
     <text class="small-text comment-btn" @click="toggle(false)" v-if="collapsed">[+]</text>

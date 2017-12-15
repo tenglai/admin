@@ -1,3 +1,4 @@
+<!-- 单条新闻项 -->
 <template>
   <div class="cell-item">
     <text class="story-score">{{story.score}}</text>

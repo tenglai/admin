@@ -1,3 +1,6 @@
+/**
+ * 操作数据的 Actions
+ */
 import { fetchItems, fetchIdsByType, fetchUser } from './fetch'
 
 const LOAD_MORE_STEP = 10

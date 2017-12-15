@@ -1,3 +1,6 @@
+/**
+ * 数据的 Mutations
+ */
 export function SET_ACTIVE_TYPE (state, { type }) {
   state.activeType = type
 }

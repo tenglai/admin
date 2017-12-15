@@ -1,3 +1,4 @@
+<!-- 用户信息页 -->
 <template>
   <div class="user-view">
     <app-header></app-header>
