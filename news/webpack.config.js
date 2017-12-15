@@ -8,13 +8,10 @@ var bannerPlugin = new webpack.BannerPlugin({
 
 function getBaseConfig () {
   return {
-    // 指定spa应用的入口文件
     entry: {
       'index': path.resolve('src', 'entry.js')
     },
-    // 指定项目构建的输出位置
     output: {
-      // 输出位置
       path: path.resolve(__dirname, 'dist')
     },
     module: {
