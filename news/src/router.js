@@ -10,7 +10,7 @@ import UserView from './views/UserView.vue'
 
 Vue.use(Router)
 
-// Story view factory
+// 创建顶部选项视图
 function createStoriesView (type) {
   return {
     name: `${type}-stories-view`,
@@ -23,14 +23,41 @@ function createStoriesView (type) {
 export default new Router({
   // mode: 'abstract',
   routes: [
-    { path: '/top', component: createStoriesView('top') },
-    { path: '/new', component: createStoriesView('new') },
-    { path: '/show', component: createStoriesView('show') },
-    { path: '/ask', component: createStoriesView('ask') },
-    { path: '/job', component: createStoriesView('job') },
-    { path: '/article/:url(.*)?', component: ArticleView },
-    { path: '/item/:id(\\d+)', component: CommentView },
-    { path: '/user/:id', component: UserView },
-    { path: '/', redirect: '/top' }
+    {
+      path: '/top',
+      component: createStoriesView('top')
+    },
+    {
+      path: '/new',
+      component: createStoriesView('new')
+    },
+    {
+      path: '/show',
+      component: createStoriesView('show')
+    },
+    {
+      path: '/ask',
+      component: createStoriesView('ask')
+    },
+    {
+      path: '/job',
+      component: createStoriesView('job')
+    },
+    {
+      path: '/article/:url(.*)?',
+      component: ArticleView
+    },
+    {
+      path: '/item/:id(\\d+)',
+      component: CommentView
+    },
+    {
+      path: '/user/:id',
+      component: UserView
+    },
+    {
+      path: '/',
+      redirect: '/top'
+    }
   ]
 })
