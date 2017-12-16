@@ -1,8 +1,9 @@
 const pathTo = require('path');
 const fs = require('fs-extra');
 const webpack = require('webpack');
-const entry = {};
-const weexEntry = {};
+// 修改入口文件
+const entry = {index: pathTo.resolve('src', 'entry.js')};
+const weexEntry = {index: pathTo.resolve('src', 'entry.js')};
 const vueWebTemp = 'temp';
 const hasPluginInstalled = fs.existsSync('./web/plugin.js');
 const isWin = /^win/.test(process.platform);
@@ -35,7 +36,9 @@ const walk = (dir) => {
       const fullpath = pathTo.join(directory, file);
       const stat = fs.statSync(fullpath);
       const extname = pathTo.extname(fullpath);
-      if (stat.isFile() && extname === '.vue' || extname === '.we') {
+      // 定义基础路径
+      const basename = pathTo.basename(fullpath);
+      if (stat.isFile() && extname === '.vue' || basename != 'App.vue') {
         if (!fileType) {
           fileType = extname;
         }
@@ -49,7 +52,7 @@ const walk = (dir) => {
           entry[name] = pathTo.join(__dirname, entryFile) + '?entry=true';
         }
         weexEntry[name] = fullpath + '?entry=true';
-      } else if (stat.isDirectory() && file !== 'build' && file !== 'include') {
+      } else if (stat.isDirectory() && ['build','include','assets','filters','mixins'].indexOf(file) == -1) {
         const subdir = pathTo.join(dir, file);
         walk(subdir);
       }
@@ -94,7 +97,7 @@ const webConfig = {
    * See: http://webpack.github.io/docs/configuration.html#devtool
    * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
    */
-  devtool: 'source-map',
+  // devtool: 'source-map',
   /*
    * Options affecting the resolving of modules.
    *
@@ -102,28 +105,29 @@ const webConfig = {
    */
   module: {
     // webpack 2.0 
-    rules: [{
-      test: /\.js$/,
-      use: [{
-        loader: 'babel-loader'
-      }],
-      exclude: /node_modules(?!(\/|\\).*(weex).*)/
-    }, {
-      test: /\.vue(\?[^?]+)?$/,
-      use: [{
-        loader: 'vue-loader',
-        options: {
-          compilerModules: [
-            {
-              postTransformNode: el => {
-                el.staticStyle = `$processStyle(${el.staticStyle})`
-                el.styleBinding = `$processStyle(${el.styleBinding})`
-              }
-            }
-          ]
-        }
-      }]
-    }]
+    rules: [
+      {
+        test: /\.js$/,
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2015']
+          }
+        }]
+      },
+      {
+        test: /\.css$/,
+        use: [{
+          loader: 'css-loader'
+        }]
+      },
+      {
+        test: /\.vue(\?[^?]+)?$/,
+        use: [{
+          loader: 'vue-loader'
+        }]
+      }
+    ]
   },
   /*
    * Add additional plugins to the compiler.
@@ -149,8 +153,7 @@ const weexConfig = {
       test: /\.js$/,
       use: [{
         loader: 'babel-loader'
-      }],
-      exclude: /node_modules(?!(\/|\\).*(weex).*)/
+      }]
     }, {
       test: /\.vue(\?[^?]+)?$/,
       use: [{
@@ -181,8 +184,6 @@ const weexConfig = {
   plugins: plugins
 };
 // If The fileType is '.we', only need to use weexConfig for building. 
-if (fileType === '.we') {
-  module.exports = weexConfig;
-} else {
-  module.exports = [webConfig, weexConfig];
-}
+var exports = [webConfig, weexConfig];
+
+module.exports = exports;
