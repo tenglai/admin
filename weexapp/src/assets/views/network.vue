@@ -76,7 +76,7 @@
 <script>
   // 页面加载失败类型
   import TYPES from './network';
-  // 工具类 函数
+  // 功能函数
   import NetWorkUtils from '../../../packages/utils';
   // 弹窗
   const modal = weex.requireModule('modal');

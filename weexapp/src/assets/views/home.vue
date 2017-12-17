@@ -70,7 +70,7 @@
   // 引入 轮播图组件
   import Slider from '../components/Slider.vue';
   // 引入 UI组件
-  import { WxcMinibar, WxcTabPage, WxcPanItem, WxcCell, Utils } from 'weex-ui';
+  import { WxcMinibar, WxcTabPage, WxcPanItem, WxcCell, Utils } from '../../../index';
   // 配置文件
   import Config from './config';
   // 数据请求组件
