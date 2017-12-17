@@ -7,7 +7,7 @@ let config = Array.isArray(configs) ? configs[0] : configs;
 config.devServer = {
     contentBase: pathTo.join(__dirname, ''),
     compress: true,
-    // hot: true,
+    hot: true,
     host: '0.0.0.0',
     public: ip + ':8080/web',
     // publicPath: '/dist/',
