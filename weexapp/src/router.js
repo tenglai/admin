@@ -12,6 +12,10 @@ import ViewAll from './assets/views/all.vue'
 import Viewdemo from './assets/views/demo.vue'
 // 推荐
 import ViewTopbvive from './assets/views/top.vue'
+// 公用webview
+import Viewwebvive from './page/webview.vue'
+// 网络异常页
+import ViewNetwork from './assets/views/network.vue'
 
 Vue.use(Router)
 
@@ -48,6 +52,16 @@ export default new Router({
         {
         	path: '/top',
         	component: ViewTopbvive
+        },
+        // 公用 webview
+        {
+            path: '/webview',
+            component: Viewwebvive
+        },
+        // 网络异常页
+        {
+            path: '/network',
+            component: ViewNetwork
         }
     ]
 })
