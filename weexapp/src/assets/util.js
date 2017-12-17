@@ -1,7 +1,6 @@
 /**
  * 工具类
  */
-
 let utilFunc = {
     initIconFont () {
         let domModule = weex.requireModule('dom');
