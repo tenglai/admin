@@ -1,0 +1,4 @@
+#Thu Dec 21 12:53:57 CST 2017
+base.0=C\:\\Users\\Administrator\\Desktop\\admin\\weexapp\\platforms\\android\\app\\build\\intermediates\\transforms\\dex\\release\\folders\\1000\\1f\\main
+renamed.0=classes.dex
+file.0=C\:\\Users\\Administrator\\Desktop\\admin\\weexapp\\platforms\\android\\app\\build\\intermediates\\transforms\\dex\\release\\folders\\1000\\1f\\main\\classes.dex
