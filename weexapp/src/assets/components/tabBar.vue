@@ -2,24 +2,24 @@
 <template>
   <div class="wrapper">
     <div class="bar-item" @click="tabTo('home')">
-      <text class="bar-ic iconfont" :style="testCS">&#xe65c;</text>
-      <text class="bar-txt">首页</text>
+      <text class="bar-ic iconfont" :style="ActiveHome">&#xe65c;</text>
+      <text class="bar-txt" :style="ActiveHome">首页</text>
     </div>
     <div class="bar-item" @click="tabTo('top')">
-      <text class="bar-ic iconfont">&#xe608;</text>
-      <text class="bar-txt">推荐</text>
+      <text class="bar-ic iconfont" :style="ActiveTop">&#xe608;</text>
+      <text class="bar-txt" :style="ActiveTop">推荐</text>
     </div>
     <div class="bar-item act" @click="tabTo('demo')">
-      <text class="bar-ic iconfont">&#xe7f9;</text>
-      <text class="bar-txt">分类</text>
+      <text class="bar-ic iconfont" :style="ActiveDemo">&#xe7f9;</text>
+      <text class="bar-txt" :style="ActiveDemo">分类</text>
     </div>
     <div class="bar-item" @click="tabTo('all')">
-      <text class="bar-ic iconfont">&#xe625;</text>
-      <text class="bar-txt">PHP教程</text>
+      <text class="bar-ic iconfont" :style="ActiveAll">&#xe625;</text>
+      <text class="bar-txt" :style="ActiveAll">PHP教程</text>
     </div>
     <div class="bar-item" @click="tabTo('my')">
-      <text class="bar-ic iconfont">&#xe606;</text>
-      <text class="bar-txt">关于</text>
+      <text class="bar-ic iconfont" :style="ActiveMy">&#xe606;</text>
+      <text class="bar-txt" :style="ActiveMy">关于</text>
     </div>
   </div>
 </template>
@@ -66,8 +66,20 @@
 
   export default {
     computed:{
-      testCS:function () {
+      ActiveHome:function () {
         return this.pIndexKey == 'home'?'color:#b4282d;':''
+      },
+      ActiveTop:function () {
+        return this.pIndexKey == 'top'?'color:#b4282d;':''
+      },
+      ActiveDemo:function () {
+        return this.pIndexKey == 'demo'?'color:#b4282d;':''
+      },
+      ActiveAll:function () {
+        return this.pIndexKey == 'all'?'color:#b4282d;':''
+      },
+      ActiveMy:function () {
+        return this.pIndexKey == 'my'?'color:#b4282d;':''
       }
     },
     data () {

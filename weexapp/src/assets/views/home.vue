@@ -4,8 +4,8 @@
     <!-- 标题栏 -->
   	<wxc-minibar
       title="首页"
-      right-button="N"
-      left-button="N"
+      right-button=""
+      left-button=""
       background-color="#F2F3F4"
       text-color="#333333"></wxc-minibar>
     <!-- 滚动视图 scroller需要用一个div将内容包含 -->
