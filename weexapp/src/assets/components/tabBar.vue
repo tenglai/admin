@@ -2,8 +2,10 @@
 <template>
   <div class="wrapper">
     <div class="bar-item" @click="tabTo('home')">
-      <text class="bar-ic iconfont" :style="ActiveHome">&#xe65c;</text>
-      <text class="bar-txt" :style="ActiveHome">首页</text>
+      <text class="bar-ic iconfont home1"  :style="ActiveHome" v-if="pIndexKey=='home'" style="color: rgb(180, 40, 45)">&#xe65c;</text>
+      <text class="bar-ic iconfont home1"  :style="ActiveHome" v-else >&#xe65c;</text>
+      <text class="bar-txt home1" :style="ActiveHome" v-if="pIndexKey=='home'" style="color: rgb(180, 40, 45)">首页</text>
+      <text class="bar-txt home1" :style="ActiveHome" v-else>首页</text>
     </div>
     <div class="bar-item" @click="tabTo('top')">
       <text class="bar-ic iconfont" :style="ActiveTop">&#xe608;</text>
@@ -27,6 +29,12 @@
 <style scoped>
   .iconfont {
     font-family:iconfont;
+  }
+  .home1{
+
+  }
+  .homeb{
+    color: rgb(102, 102, 102);
   }
   .wrapper{
     position: fixed;
