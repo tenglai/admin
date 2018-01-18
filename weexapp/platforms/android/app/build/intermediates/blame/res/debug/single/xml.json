@@ -1,10 +1,10 @@
 [
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\admin\\weexapp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml\\config.xml",
-        "source": "C:\\Users\\Administrator\\Desktop\\admin\\weexapp\\platforms\\android\\app\\build\\intermediates\\exploded-aar\\android\\weexplugin\\unspecified\\res\\xml\\config.xml"
+        "merged": "D:\\github-projects\\admin\\weexapp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml\\config.xml",
+        "source": "D:\\github-projects\\admin\\weexapp\\platforms\\android\\app\\build\\intermediates\\exploded-aar\\android\\weexplugin\\unspecified\\res\\xml\\config.xml"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\admin\\weexapp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml\\app_config.xml",
-        "source": "C:\\Users\\Administrator\\Desktop\\admin\\weexapp\\platforms\\android\\app\\src\\main\\res\\xml\\app_config.xml"
+        "merged": "D:\\github-projects\\admin\\weexapp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml\\app_config.xml",
+        "source": "D:\\github-projects\\admin\\weexapp\\platforms\\android\\app\\src\\main\\res\\xml\\app_config.xml"
     }
 ]
